@@ -233,6 +233,10 @@
   .yesno ul{margin:0;padding-left:18px;font-size:13px;line-height:1.85;color:var(--sub)}
   .yesno.ok h4{color:#2e8f63}
   .yesno.no h4{color:#c9483f}
+  /* ==BITD-NARROW-CSS== */
+  body.narrow header,body.narrow .tabs,body.narrow #view-start,
+  body.narrow #view-price,body.narrow #view-faq{max-width:940px;margin-left:auto;margin-right:auto}
+  body.narrow .tabs{padding-left:0;padding-right:0}
   /* ==BITD-CONTACT-CSS== */
   .contacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:11px;margin-bottom:12px}
   .ccard{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:15px 16px;box-shadow:var(--shadow);
@@ -323,6 +327,10 @@
     .calc .cprice{font-size:12px}
     .calc input[type=number]{min-height:42px;width:60px}
     .stepper button{width:42px;height:42px;font-size:19px}
+    .calc .crow{flex-wrap:wrap}
+    .calc .cname{flex:1 1 100%}
+    .calc .cprice{margin-right:auto}
+    .calc .csub{min-width:0}
     .calc .crow{padding:10px 0}
     .psum{grid-template-columns:repeat(2,1fr)}
     .pstep{font-size:16px}
@@ -1447,6 +1455,7 @@ function switchView(v){
   document.getElementById('eyebrow').textContent=VIEWS[v].eyebrow;
   document.getElementById('ptitle').textContent=VIEWS[v].title;
   document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on', b.dataset.view===v));
+  document.body.classList.toggle('narrow', v!=='library');
   if(v==='price') buildCalc();
 }
 document.querySelectorAll('.tab').forEach(b=>{
@@ -1467,8 +1476,8 @@ const CALC_MAIN=[
   {k:'builtin', tier:'B', name:'빌트인 · 릴툰 — VSF · 와루도 일반', price:40000}
 ];
 const CALC_ROWS=[
-  {g:'헤어 · 의상', name:'헤어 추가',              price:{A:15000, B:8000}},
-  {name:'의상 추가',              price:{A:20000, B:8000}},
+  {g:'헤어 · 의상', name:'헤어 추가',              price:{A:15000, B:8000}, incl:true},
+  {name:'의상 추가',              price:{A:20000, B:8000}, incl:true},
   {name:'옷장 기능 추가',          price:5000},
   {g:'물리 (마지카 클로스)', name:'최초, 마지카 클로스 세팅', price:20000, max:1},
   {name:'마지카 클로스 (보통)',    price:6000,  memo:'주로 헤어/악세'},
@@ -1509,11 +1518,11 @@ function buildCalc(){
       '<div class="crow"><div class="cname"><b>마감 기한</b></div><div class="selwrap"><select id="crush">'+
       RUSH.map(r=>`<option value="${r.k}">${r.label}</option>`).join('')+'</select></div></div>'+
       '<div class="ctotal"><span>예상 합계</span><button class="calcreset" id="creset" type="button">초기화</button><span class="big" id="ctotal">0원</span></div>'+
-      '<div class="chint">※ 닐로툰은 <b>헤어 1 · 의상 1</b>을 기본으로 잡아 두었습니다. 개수를 조절해 주세요.<br>'+
+      '<div class="chint">※ 닐로툰을 <b>처음</b> 맡기시는 경우 기본 비용에 <b>헤어 1 · 의상 1</b>이 포함되어 있어, 1개까지는 추가 요금이 없습니다.<br>'+
       '※ 목록에 없는 항목은 상담 후 별도 안내드립니다. 실제 난이도에 따라 금액이 달라질 수 있는 <b>참고용 계산</b>입니다.</div>';
     box.dataset.built='1';
     box.addEventListener('input',e=>{
-      if(e.target.id==='cfirst') calcFirst=e.target.checked;
+      if(e.target.id==='cfirst'){ calcFirst=e.target.checked; syncIncluded(); }
       recalc();
     });
     document.getElementById('cmain').addEventListener('change',e=>{ calcMain=e.target.value; applyDefaults(); recalc(); });
@@ -1523,8 +1532,9 @@ function buildCalc(){
       const b=e.target.closest('[data-step]'); if(!b) return;
       const inp=box.querySelector(`input[data-qty="${b.dataset.t}"]`); if(!inp||inp.disabled) return;
       const max=inp.getAttribute('max')?parseInt(inp.getAttribute('max'),10):Infinity;
+      const min=parseInt(inp.getAttribute('min'),10)||0;
       const v=(parseInt(inp.value,10)||0)+parseInt(b.dataset.step,10);
-      inp.value=Math.max(0,Math.min(max,v));
+      inp.value=Math.max(min,Math.min(max,v));
       recalc();
     });
     document.getElementById('creset').addEventListener('click',()=>{
@@ -1536,12 +1546,25 @@ function buildCalc(){
   }
   recalc();
 }
-/* 닐로툰은 헤어 · 의상을 기본 1개로 시작 */
+/* 닐로툰 기본 비용에는 헤어 1 · 의상 1이 포함 → 처음 맡길 때만 적용 */
+function inclOn(){ return calcMain==='nilo' && calcFirst; }
+/* 포함분이 있으면 하한 1, 없으면 하한 0 */
+function syncIncluded(){
+  const on=inclOn();
+  [0,1].forEach(i=>{
+    const inp=document.querySelector(`input[data-qty="${i}"]`); if(!inp) return;
+    inp.min = on?1:0;
+    let q=parseInt(inp.value,10); if(isNaN(q)) q=0;
+    if(on && q<1) inp.value=1;
+  });
+}
+/* 작업 종류가 바뀌면 헤어 · 의상 수량을 초기 상태로 */
 function applyDefaults(){
-  const hair=document.querySelector('input[data-qty="0"]'), cloth=document.querySelector('input[data-qty="1"]');
-  if(!hair||!cloth) return;
-  const v=(calcMain==='nilo')?1:0;
-  hair.value=v; cloth.value=v;
+  [0,1].forEach(i=>{
+    const inp=document.querySelector(`input[data-qty="${i}"]`); if(!inp) return;
+    inp.value = (calcMain==='nilo')?1:0;
+  });
+  syncIncluded();
 }
 function recalc(){
   const main=CALC_MAIN.find(m=>m.k===calcMain);
@@ -1553,13 +1576,17 @@ function recalc(){
     const lab=document.querySelector(`[data-price="${i}"]`);
     if(!row||!inp||!lab) return;
     if(p==null){ row.style.opacity=.4; inp.disabled=true; inp.value=0; lab.textContent='해당 없음'; return; }
-    row.style.opacity=1; inp.disabled=false; lab.textContent=won(p);
-    let q=parseInt(inp.value,10); if(isNaN(q)||q<0) q=0;
+    row.style.opacity=1; inp.disabled=false;
+    const free = (r.incl && inclOn()) ? 1 : 0;
+    const lo = free;
+    let q=parseInt(inp.value,10); if(isNaN(q)||q<lo) q=lo;
     if(r.max && q>r.max){ q=r.max; inp.value=r.max; }
-    total += p*q;
+    const bill=Math.max(0,q-free);
+    lab.innerHTML = free ? won(p)+' <span style="opacity:.75">· 1개 포함</span>' : won(p);
+    total += p*bill;
     const sub=document.querySelector(`[data-sub="${i}"]`);
-    if(sub) sub.textContent = q>0 ? won(p*q) : '';
-    row.classList.toggle('active', q>0);
+    if(sub) sub.textContent = bill>0 ? won(p*bill) : (free&&q>0 ? '포함' : '');
+    row.classList.toggle('active', bill>0);
   });
   total *= calcRush;
   const t=document.getElementById('ctotal'); if(t) t.textContent=won(total);
