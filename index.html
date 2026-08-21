@@ -235,6 +235,18 @@
   .yesno ul{margin:0;padding-left:18px;font-size:13px;line-height:1.85;color:var(--sub)}
   .yesno.ok h4{color:#2e8f63}
   .yesno.no h4{color:#c9483f}
+  /* ==BITD-CONTACT-CSS== */
+  .contacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:11px;margin-bottom:12px}
+  .ccard{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:15px 16px;box-shadow:var(--shadow);
+    display:flex;flex-direction:column;gap:9px}
+  .ccard .cwho{font-size:14.5px;font-weight:800}
+  .ccard .crole{font-size:11.5px;color:var(--sub);font-weight:700;margin-top:-6px}
+  .ccard .cid{display:flex;align-items:center;gap:8px}
+  .ccard .cid code{flex:1;min-width:0;background:var(--bg1);border:1px solid var(--line);border-radius:8px;
+    padding:8px 11px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;font-weight:700;
+    color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .dcbadge{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:800;color:var(--accent-ink);
+    background:var(--accent-soft);padding:3px 9px;border-radius:999px;align-self:flex-start}
   /* ==BITD-TERMS-CSS== */
   .termsbox{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);
     max-height:560px;overflow-y:auto;padding:4px 20px 20px;scroll-behavior:smooth}
@@ -465,9 +477,25 @@
     </div>
 
     <div class="pstep"><span class="num">6</span> 문의하기</div>
-    <div class="pnote" id="contact-slot">
-      <b>문의 경로</b>
-      <ul><li>추후 게시 예정입니다.</li></ul>
+    <div class="pnote" style="margin-bottom:12px">
+      <b>디스코드</b>로 문의해 주세요. 아이디를 복사해 친구 추가 후 DM 주시면 됩니다.
+    </div>
+    <div class="contacts" id="contact-slot">
+      <div class="ccard">
+        <span class="dcbadge">Discord</span>
+        <div class="cwho">어둠속의칼날</div>
+        <div class="cid"><code>bladesinthedark</code><button class="copybtn" type="button" data-copy="bladesinthedark">복사</button></div>
+      </div>
+      <div class="ccard">
+        <span class="dcbadge">Discord</span>
+        <div class="cwho">언어초밥</div>
+        <div class="cid"><code>kotonohazushi</code><button class="copybtn" type="button" data-copy="kotonohazushi">복사</button></div>
+      </div>
+      <div class="ccard">
+        <span class="dcbadge">Discord</span>
+        <div class="cwho">티라바</div>
+        <div class="cid"><code>tirava2000</code><button class="copybtn" type="button" data-copy="tirava2000">복사</button></div>
+      </div>
     </div>
   </div><!-- /view-start -->
 
@@ -588,6 +616,7 @@
         <li>결제는 <b>계좌이체만 지원</b>합니다. (현금영수증 발행 가능)</li>
         <li>작업 기간은 <b>협의</b>로 결정되며, 기본 <b>수정 2회</b>가 포함됩니다.</li>
         <li>표기된 금액은 기준 가격이며, 실제 작업 난이도에 따라 달라질 수 있습니다.</li>
+        <li>문의는 디스코드로 주세요. 아이디는 <b>의뢰 시작</b> 탭에 있습니다.</li>
       </ul>
     </div>
 
@@ -1101,6 +1130,8 @@
       <input id="faqq" type="text" placeholder="키워드로 검색…  (예: 환불, 기간, 결제)" autocomplete="off">
     </div>
     <div class="faq" id="faqlist">
+      <div class="faqitem"><div class="q">문의는 어디로 하나요?</div>
+        <div class="ans"><b>디스코드</b>로 연락 주세요. 어둠속의칼날 <b>bladesinthedark</b> · 언어초밥 <b>kotonohazushi</b> · 티라바 <b>tirava2000</b><br>아이디는 <b>의뢰 시작</b> 탭에서 복사하실 수 있습니다.</div></div>
       <div class="faqitem"><div class="q">전에도 작업을 맡겼는데, 기본 비용을 또 내야 하나요?</div>
         <div class="ans">아니요. <b>기본 비용은 어칼 팀에 처음 맡기실 때 한 번만</b> 발생합니다. 이미 작업하신 적이 있다면 기본 비용 없이 <b>추가 옵션 비용만</b> 계산됩니다.</div></div>
       <div class="faqitem"><div class="q">작업 기간은 얼마나 걸리나요?</div>
@@ -1130,7 +1161,7 @@
     카드 위 <b>✕</b> 버튼으로 상품을 직접 숨길 수 있어요(이 브라우저에 기억됨). 대응 아바타는 <b>보유분만</b> 표시합니다.</span>
     <span id="foot-price" style="display:none">가격은 예고 없이 변경될 수 있습니다 · 목록에 없는 항목은 상담 후 별도 안내드립니다</span>
     <span id="foot-faq" style="display:none">여기에 없는 내용은 문의해 주세요</span>
-    <span id="foot-start" style="display:none">문의 주시면 순서대로 안내드립니다</span>
+    <span id="foot-start" style="display:none">문의는 디스코드로 — bladesinthedark · kotonohazushi · tirava2000</span>
   </footer>
 </div>
 
@@ -1577,13 +1608,15 @@ function recalc(){
 
 /* ==BITD-COPYFORM-JS== */
 (function(){
-  const b=document.getElementById('copyform'); if(!b) return;
-  b.addEventListener('click',async()=>{
-    const t=document.getElementById('formtext').textContent;
-    try{ await navigator.clipboard.writeText(t); }
-    catch(e){ const ta=document.createElement('textarea'); ta.value=t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); }
-    const old=b.textContent; b.textContent='복사됨 ✓';
-    setTimeout(()=>{b.textContent=old;},1400);
+  async function copy(text){
+    try{ await navigator.clipboard.writeText(text); }
+    catch(e){ const ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); }
+  }
+  function flash(btn){ const old=btn.textContent; btn.textContent='복사됨 ✓'; setTimeout(()=>{btn.textContent=old;},1400); }
+  document.addEventListener('click',e=>{
+    const b=e.target.closest('.copybtn'); if(!b) return;
+    if(b.id==='copyform'){ const el=document.getElementById('formtext'); if(el){ copy(el.textContent); flash(b); } return; }
+    if(b.dataset.copy){ copy(b.dataset.copy); flash(b); }
   });
 })();
 
