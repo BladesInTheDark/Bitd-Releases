@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>BOOTH 보유 상품 정리</title>
+<title>어둠속의칼날 · 커미션 안내</title>
 <script>/* 초기 테마(플래시 방지) */(function(){try{var t=localStorage.getItem('booth_theme_v1');if(!t)t=(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();</script>
 <style>
   :root{
@@ -133,15 +133,97 @@
   .hidden-item .rs{color:var(--accent);cursor:pointer;font-weight:700}
   .hidden-item .rs:hover{text-decoration:underline}
   footer{text-align:center;color:var(--sub);font-size:12.5px;margin-top:40px;line-height:1.8}
+
+  /* ===== 탭 ===== */
+  .tabs{display:flex;gap:6px;margin:4px 0 16px;border-bottom:1px solid var(--line)}
+  .tab{appearance:none;border:1px solid transparent;border-bottom:none;background:transparent;color:var(--sub);
+    font-family:inherit;font-size:14.5px;font-weight:700;padding:11px 20px;border-radius:12px 12px 0 0;
+    cursor:pointer;transition:all .15s;position:relative;top:1px}
+  .tab:hover{color:var(--accent)}
+  .tab.on{background:var(--card);color:var(--accent);border-color:var(--line)}
+  /* ===== 커미션 가격 ===== */
+  .pintro{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;
+    box-shadow:var(--shadow);margin-bottom:14px;font-size:14.5px;line-height:1.75}
+  .pintro b{color:var(--accent)}
+  .psum{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:22px}
+  .psumcard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow)}
+  .psumcard .k{display:block;font-size:11.5px;color:var(--sub);font-weight:700;letter-spacing:.04em;margin-bottom:3px}
+  .psumcard .v{display:block;font-size:19px;font-weight:800;letter-spacing:-.02em}
+  .pstep{display:flex;align-items:center;gap:9px;font-size:17px;font-weight:800;margin:26px 0 12px;letter-spacing:-.01em}
+  .pstep .num{display:inline-flex;align-items:center;justify-content:center;width:25px;height:25px;border-radius:50%;
+    background:var(--accent);color:#fff;font-size:13px;font-weight:800;flex:none}
+  .pstep .sub{font-size:13px;font-weight:600;color:var(--sub)}
+  .pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+  .pcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:17px 18px;box-shadow:var(--shadow);
+    display:flex;flex-direction:column;gap:7px;position:relative}
+  .pcard.hl{border-color:var(--accent)}
+  .pcard .nm{font-size:14.5px;font-weight:800;line-height:1.45}
+  .pcard .pr{font-size:23px;font-weight:800;color:var(--accent);letter-spacing:-.02em}
+  .pcard .ds{font-size:12.5px;color:var(--sub);line-height:1.6}
+  .pcard .inc{font-size:12px;font-weight:700;color:var(--cat-hair);background:var(--hair-soft);
+    padding:4px 9px;border-radius:8px;align-self:flex-start}
+  .pcard .tagtop{position:absolute;top:-9px;right:14px;background:var(--accent);color:#fff;font-size:11px;
+    font-weight:800;padding:3px 10px;border-radius:999px}
+  .ptbl{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);
+    border-radius:12px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:14px;font-size:13.5px}
+  .ptbl caption{text-align:left;font-weight:800;font-size:14px;padding:13px 16px 9px;color:var(--ink);
+    background:var(--card);border-bottom:1px solid var(--line)}
+  .ptbl th,.ptbl td{padding:10px 16px;text-align:left;border-top:1px solid var(--line);vertical-align:top}
+  .ptbl thead th{background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:800;
+    letter-spacing:.03em;border-top:none}
+  .ptbl td.num{text-align:right;font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .ptbl td .memo{display:block;color:var(--sub);font-size:12px;margin-top:3px;line-height:1.55}
+  .ptbl tr:hover td{background:var(--accent-soft)}
+  .ptbl .dash{color:var(--sub);font-weight:600}
+  .pnote{background:var(--accent-soft);border:1px solid var(--line);border-radius:12px;padding:14px 17px;
+    font-size:13px;color:var(--ink);line-height:1.8;margin-bottom:14px}
+  .pnote b{color:var(--accent)}
+  .pnote ul{margin:6px 0 0 18px}
+  .pnote li{margin:3px 0}
+  /* 견적 계산기 */
+  .calc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+  .calc .crow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0;
+    border-top:1px solid var(--line);font-size:13.5px}
+  .calc .crow:first-of-type{border-top:none}
+  .calc .cname{flex:1;min-width:0}
+  .calc .cname small{display:block;color:var(--sub);font-size:11.5px;margin-top:2px}
+  .calc .cprice{color:var(--sub);font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .calc input[type=number]{width:62px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;
+    background:var(--bg1);color:var(--ink);font-family:inherit;font-size:13px;font-weight:700;text-align:center;outline:none}
+  .calc input[type=number]:focus{border-color:var(--accent)}
+  .calc .ctotal{display:flex;align-items:baseline;justify-content:space-between;margin-top:14px;padding-top:14px;
+    border-top:2px solid var(--accent);font-size:15px;font-weight:800}
+  .calc .ctotal .big{font-size:27px;color:var(--accent);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .calc .chint{font-size:12px;color:var(--sub);margin-top:9px;line-height:1.65}
+  .cta{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;text-decoration:none;
+    padding:13px 22px;border-radius:12px;font-weight:800;font-size:14.5px;box-shadow:var(--shadow);margin-top:4px}
+  .cta:hover{filter:brightness(1.07)}
+  @media(max-width:560px){
+    .ptbl th,.ptbl td{padding:9px 11px;font-size:12.5px}
+    .tab{padding:10px 14px;font-size:13.5px}
+    /* 기본 옵션 select 행은 좁은 화면에서 세로 배치 */
+    .calc .crow:first-of-type{flex-wrap:wrap}
+    .calc .crow .selwrap{width:100%}
+    .calc .crow .selwrap select{width:100%}
+    .calc .cprice{font-size:12px}
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <div class="eyebrow">Booth Library</div>
-    <h1>BOOTH 보유 상품 정리</h1>
-    <p class="lead">구매 라이브러리 <b id="hcount"></b>개 · 분류 · 태그 · <b>아바타별</b> 검색 <span class="pill">2026-08-19 기준</span></p>
+    <div class="eyebrow" id="eyebrow">Booth Library</div>
+    <h1 id="ptitle">BOOTH 보유 상품 정리</h1>
+    <p class="lead" id="lead-lib">구매 라이브러리 <b id="hcount"></b>개 · 분류 · 태그 · <b>아바타별</b> 검색 <span class="pill">2026-08-19 기준</span></p>
+    <p class="lead" id="lead-price" style="display:none">3D 아바타 작업 · 와루도 / 멜리고 / VRChat / VSeeFace <span class="pill">2026-08-21 기준</span></p>
   </header>
+
+  <div class="tabs">
+    <button class="tab on" data-view="library">📚 보유 상품</button>
+    <button class="tab" data-view="price">💰 커미션 가격</button>
+  </div>
+
+  <div id="view-library">
 
   <div class="toolbar">
     <div class="searchbox">
@@ -173,10 +255,124 @@
     <h3>숨긴 항목 <span id="hidn"></span></h3>
     <div class="hidden-list" id="hiddenlist"></div>
   </div>
+  </div><!-- /view-library -->
+
+  <div id="view-price" style="display:none">
+
+    <div class="pintro">
+      주로 <b>와루도 · 멜리고용 닐로툰</b> 작업을 진행합니다.<br>
+      릴툰도 가능하나 웬만하면 받지 않고 있습니다. (언어초밥 작가님 혹은 티라바 작가님께 가주세요!)
+    </div>
+
+    <div class="psum">
+      <div class="psumcard"><span class="k">시작가</span><span class="v">40,000원~</span></div>
+      <div class="psumcard"><span class="k">작업 기간</span><span class="v">30일</span></div>
+      <div class="psumcard"><span class="k">수정 횟수</span><span class="v">2회 포함</span></div>
+      <div class="psumcard"><span class="k">결제</span><span class="v">에스크로</span></div>
+    </div>
+
+    <div class="pstep"><span class="num">1</span> 기본 비용 <span class="sub">— 아래 중 <b>1개 필수</b> 선택</span></div>
+    <div class="pgrid">
+      <div class="pcard hl">
+        <span class="tagtop">주력</span>
+        <div class="nm">최초, 닐로툰 작업 비용</div>
+        <div class="pr">150,000원</div>
+        <div class="inc">헤어 1 · 의상 1 포함</div>
+        <div class="ds">URP, 닐로툰(멜리고 혹은 와루도 프로) 작업에 해당합니다.</div>
+      </div>
+      <div class="pcard">
+        <div class="nm">최초, 프로젝트 기본 생성 비용 (VRChat)</div>
+        <div class="pr">40,000원</div>
+        <div class="ds">VRChat 작업에 해당합니다.</div>
+      </div>
+      <div class="pcard">
+        <div class="nm">최초, 프로젝트 기본 생성 비용 (빌트인, 릴툰)</div>
+        <div class="pr">40,000원</div>
+        <div class="ds">VSF, 와루도 일반 등 빌트인, 릴툰 작업에 해당합니다.</div>
+      </div>
+    </div>
+
+    <div class="pstep"><span class="num">2</span> 추가 옵션 <span class="sub">— 필요한 만큼</span></div>
+
+    <table class="ptbl">
+      <caption>헤어 · 의상 추가 <span style="font-weight:600;color:var(--sub);font-size:12.5px">— 선택한 기본 옵션에 따라 단가가 다릅니다</span></caption>
+      <thead><tr><th>항목</th><th style="text-align:right">닐로툰</th><th style="text-align:right">빌트인·릴툰 / VRChat</th></tr></thead>
+      <tbody>
+        <tr><td>헤어 추가</td><td class="num">15,000원</td><td class="num">8,000원</td></tr>
+        <tr><td>헤어 추가 (비전용)<span class="memo">해당 아바타 전용이 아닌 헤어</span></td><td class="num dash">—</td><td class="num">12,000원</td></tr>
+        <tr><td>의상 추가</td><td class="num">20,000원</td><td class="num">8,000원</td></tr>
+        <tr><td>옷장 기능 추가</td><td class="num">5,000원</td><td class="num">5,000원</td></tr>
+      </tbody>
+    </table>
+
+    <table class="ptbl">
+      <caption>물리 — 마지카 클로스</caption>
+      <thead><tr><th>항목</th><th style="text-align:right">가격</th></tr></thead>
+      <tbody>
+        <tr><td>최초, 마지카 클로스 세팅<span class="memo">마지카 클로스 적용을 위한 최초 세팅 비용입니다. (1회)</span></td><td class="num">20,000원</td></tr>
+        <tr><td>마지카 클로스 (보통 난이도)<span class="memo">주로 헤어/악세 상품에 해당합니다만, 실제 작업시 난이도는 달라질 수 있습니다.</span></td><td class="num">6,000원</td></tr>
+        <tr><td>마지카 클로스 (어려운 난이도)<span class="memo">주로 의상 상품에 해당합니다만, 실제 작업시 난이도는 달라질 수 있습니다.</span></td><td class="num">12,000원</td></tr>
+        <tr><td>마지카 클로스 (악몽 난이도)<span class="memo">거의 해당하지 않습니다만, 제가 물리 넣다가 화나는 경우 이렇게 받는 경우도 있습니다.</span></td><td class="num">25,000원</td></tr>
+        <tr><td>스프링본을 마지카 클로스로 변경<span class="memo">스프링본 작업된 것을 변경하는 경우 항목당 추가금이 있습니다.</span></td><td class="num">5,000원</td></tr>
+      </tbody>
+    </table>
+
+    <table class="ptbl">
+      <caption>텍스쳐 수정</caption>
+      <thead><tr><th>항목</th><th style="text-align:right">가격</th></tr></thead>
+      <tbody>
+        <tr><td>텍스쳐 수정 (보통 난이도)</td><td class="num">10,000원</td></tr>
+        <tr><td>텍스쳐 수정 (어려운 난이도)</td><td class="num">20,000원</td></tr>
+        <tr><td>텍스쳐 수정 (악몽 난이도)</td><td class="num">30,000원</td></tr>
+      </tbody>
+    </table>
+
+    <table class="ptbl">
+      <caption>와루도 · 기타</caption>
+      <thead><tr><th>항목</th><th style="text-align:right">가격</th></tr></thead>
+      <tbody>
+        <tr><td>최초, 와루도 리모컨<span class="memo">1회</span></td><td class="num">30,000원</td></tr>
+        <tr><td>와루도 세팅 가이드<span class="memo">와루도 사용법 등을 1~2시간에 걸쳐 설명합니다. (녹화 후 개인 소장 가능)</span></td><td class="num">40,000원</td></tr>
+        <tr><td>볼륨 세팅 — 호출당</td><td class="num">10,000원</td></tr>
+        <tr><td>볼륨 세팅 — 맵당</td><td class="num">15,000원</td></tr>
+      </tbody>
+    </table>
+
+    <div class="pstep"><span class="num">3</span> 예상 견적 <span class="sub">— 대략적인 계산용</span></div>
+    <div class="calc" id="calc"></div>
+
+    <div class="pstep"><span class="num">4</span> 의뢰 시 필요한 정보</div>
+    <div class="pnote">
+      의뢰하실 때 아래 정보를 준비해 주세요.
+      <ul>
+        <li>(최초 정보 입력) 상황 설명 등 <span style="color:var(--sub)">— 예: 전 작가님께 파일을 받아…</span></li>
+        <li>(최초 정보 입력) 모델 정보, 파일 정보 등 <span style="color:var(--sub)">— 예: 마누카 사용, 구글 드라이브 링크</span></li>
+        <li><b>사용하는 프로그램 및 원하는 작업</b> (필수) — (닐로툰)와루도 / (닐로툰)멜리고 / (릴툰)와루도 / (릴툰)멜리고 / VRChat / VSeeFace</li>
+        <li><b>추가할 상품 링크 및 상품별 색상, 파츠 디테일</b> (필수)</li>
+        <li>기타</li>
+      </ul>
+    </div>
+
+    <div class="pnote">
+      <b>결제 · 환불</b>
+      <ul>
+        <li>에스크로 결제로 진행되며, 분쟁 시 환불이 보장됩니다.</li>
+        <li>작업 단계는 <b>작업완료 100%</b> 단일 단계입니다. 작업 착수 이후에는 환불이 어렵습니다.</li>
+        <li>기본 <b>수정 2회</b>가 포함되어 있습니다.</li>
+      </ul>
+    </div>
+
+    <a class="cta" href="https://commission.meloming.com/products/f882c859-6791-4c1a-b3fa-4e3867b7384d" target="_blank" rel="noopener">멜로밍 상품 페이지에서 보기 →</a>
+    <p style="font-size:12.5px;color:var(--sub);margin-top:10px;line-height:1.7">
+      ※ 멜로밍 커미션 서비스는 <b>2026년 9월 25일 종료 예정</b>이며 현재 신규 접수가 중단되어 있습니다. 이후 접수 경로는 별도로 안내드립니다.<br>
+      ※ 표기된 금액은 기준 가격이며, 실제 작업 난이도에 따라 달라질 수 있습니다.
+    </p>
+  </div><!-- /view-price -->
 
   <footer>
-    표시 중 <b id="fcount"></b>개 · 썸네일과 링크는 BOOTH에서 실시간으로 불러옵니다<br>
-    카드 위 <b>✕</b> 버튼으로 상품을 직접 숨길 수 있어요(이 브라우저에 기억됨). 대응 아바타는 <b>보유분만</b> 표시합니다.
+    <span id="foot-lib">표시 중 <b id="fcount"></b>개 · 썸네일과 링크는 BOOTH에서 실시간으로 불러옵니다<br>
+    카드 위 <b>✕</b> 버튼으로 상품을 직접 숨길 수 있어요(이 브라우저에 기억됨). 대응 아바타는 <b>보유분만</b> 표시합니다.</span>
+    <span id="foot-price" style="display:none">가격은 예고 없이 변경될 수 있습니다 · 문의는 커미션 페이지를 통해 주세요</span>
   </footer>
 </div>
 
@@ -446,6 +642,100 @@ qEl.addEventListener('input',()=>{ q=qEl.value.trim().toLowerCase(); render(); }
 resetEl.addEventListener('click',()=>{ fCat='all'; fTag=null; fAv=''; q=''; qEl.value=''; window.scrollTo(0,0); render(); });
 
 render();
+
+/* ===== 탭 전환 (보유 상품 / 커미션 가격) ===== */
+const VIEWS={
+  library:{el:'view-library', lead:'lead-lib', foot:'foot-lib', eyebrow:'Booth Library', title:'BOOTH 보유 상품 정리'},
+  price:  {el:'view-price',   lead:'lead-price', foot:'foot-price', eyebrow:'Commission', title:'커미션 가격 안내'}
+};
+function switchView(v){
+  if(!VIEWS[v]) v='library';
+  for(const k in VIEWS){
+    const c=VIEWS[k], on=(k===v);
+    document.getElementById(c.el).style.display = on?'':'none';
+    document.getElementById(c.lead).style.display = on?'':'none';
+    const f=document.getElementById(c.foot); if(f) f.style.display = on?'':'none';
+  }
+  document.getElementById('eyebrow').textContent=VIEWS[v].eyebrow;
+  document.getElementById('ptitle').textContent=VIEWS[v].title;
+  document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on', b.dataset.view===v));
+  if(v==='price') buildCalc();
+}
+document.querySelectorAll('.tab').forEach(b=>{
+  b.addEventListener('click',()=>{ const v=b.dataset.view; location.hash = (v==='price'?'price':''); switchView(v); window.scrollTo(0,0); });
+});
+window.addEventListener('hashchange',()=>switchView(location.hash.replace('#','')||'library'));
+
+/* ===== 견적 계산기 ===== */
+const CALC_MAIN=[
+  {k:'nilo',    name:'닐로툰 (와루도 프로 · 멜리고)', price:150000, memo:'헤어 1 · 의상 1 포함'},
+  {k:'vrc',     name:'VRChat',                      price:40000},
+  {k:'builtin', name:'빌트인 · 릴툰 (VSF · 와루도 일반)', price:40000}
+];
+/* price: 숫자 = 공통, 객체 = 메인 옵션별 (null이면 해당 없음) */
+const CALC_ROWS=[
+  {name:'헤어 추가',                price:{nilo:15000, vrc:8000, builtin:8000}},
+  {name:'헤어 추가 (비전용)',        price:{nilo:null,  vrc:12000, builtin:12000}},
+  {name:'의상 추가',                price:{nilo:20000, vrc:8000, builtin:8000}},
+  {name:'옷장 기능 추가',            price:5000},
+  {name:'최초, 마지카 클로스 세팅',   price:20000, max:1},
+  {name:'마지카 클로스 (보통)',      price:6000,  memo:'주로 헤어/악세'},
+  {name:'마지카 클로스 (어려움)',    price:12000, memo:'주로 의상'},
+  {name:'마지카 클로스 (악몽)',      price:25000},
+  {name:'스프링본 → 마지카 변경',    price:5000},
+  {name:'텍스쳐 수정 (보통)',        price:10000},
+  {name:'텍스쳐 수정 (어려움)',      price:20000},
+  {name:'텍스쳐 수정 (악몽)',        price:30000},
+  {name:'최초, 와루도 리모컨',       price:30000, max:1},
+  {name:'와루도 세팅 가이드',        price:40000, max:1},
+  {name:'볼륨 세팅 (호출당)',        price:10000, max:1},
+  {name:'볼륨 세팅 (맵당)',          price:15000, max:1}
+];
+let calcMain='nilo';
+const won=n=>n.toLocaleString('ko-KR')+'원';
+function rowPrice(r){ return (typeof r.price==='object') ? r.price[calcMain] : r.price; }
+function buildCalc(){
+  const box=document.getElementById('calc'); if(!box) return;
+  if(!box.dataset.built){
+    box.innerHTML =
+      '<div class="crow"><div class="cname"><b>기본 옵션</b><small>1개 필수</small></div>'+
+      '<div class="selwrap"><select id="cmain">'+
+      CALC_MAIN.map(m=>`<option value="${m.k}">${m.name} — ${won(m.price)}</option>`).join('')+
+      '</select></div></div>'+
+      CALC_ROWS.map((r,i)=>
+        `<div class="crow" data-i="${i}">`+
+          `<div class="cname">${r.name}${r.memo?`<small>${r.memo}</small>`:''}</div>`+
+          `<div class="cprice" data-price="${i}"></div>`+
+          `<input type="number" min="0" ${r.max?`max="${r.max}"`:''} value="0" data-qty="${i}">`+
+        '</div>').join('')+
+      '<div class="ctotal"><span>예상 합계</span><span class="big" id="ctotal">0원</span></div>'+
+      '<div class="chint">※ 닐로툰 기본 옵션에는 <b>헤어 1 · 의상 1</b>이 포함되어 있습니다. 그 이후 추가분만 입력하세요.<br>'+
+      '※ 실제 난이도에 따라 금액이 달라질 수 있는 <b>참고용 계산</b>입니다.</div>';
+    box.dataset.built='1';
+    box.addEventListener('input',recalc);
+    document.getElementById('cmain').addEventListener('change',e=>{ calcMain=e.target.value; recalc(); });
+  }
+  recalc();
+}
+function recalc(){
+  const main=CALC_MAIN.find(m=>m.k===calcMain);
+  let total=main?main.price:0;
+  CALC_ROWS.forEach((r,i)=>{
+    const p=rowPrice(r);
+    const row=document.querySelector(`.crow[data-i="${i}"]`);
+    const inp=document.querySelector(`input[data-qty="${i}"]`);
+    const lab=document.querySelector(`[data-price="${i}"]`);
+    if(!row||!inp||!lab) return;
+    if(p==null){ row.style.opacity=.4; inp.disabled=true; inp.value=0; lab.textContent='해당 없음'; return; }
+    row.style.opacity=1; inp.disabled=false; lab.textContent=won(p);
+    let q=parseInt(inp.value,10); if(isNaN(q)||q<0) q=0;
+    if(r.max && q>r.max){ q=r.max; inp.value=r.max; }
+    total += p*q;
+  });
+  const t=document.getElementById('ctotal'); if(t) t.textContent=won(total);
+}
+
+switchView(location.hash.replace('#','')||'library');
 </script>
 </body>
 </html>
