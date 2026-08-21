@@ -528,6 +528,7 @@
       <div class="psumcard"><span class="k">작업 기간</span><span class="v">협의</span></div>
       <div class="psumcard"><span class="k">수정 횟수</span><span class="v">2회 포함</span></div>
       <div class="psumcard"><span class="k">결제</span><span class="v">계좌이체만</span></div>
+      <div class="psumcard"><span class="k">표기 금액</span><span class="v">부가세 포함</span></div>
     </div>
 
     <div class="pstep"><span class="num">1</span> 예상 견적 <span class="sub">— 대략적인 계산용</span></div>
@@ -617,7 +618,44 @@
     </table>
 
 
-    <div class="pstep"><span class="num">5</span> 의뢰 시 필요한 정보</div>
+    <div class="pstep"><span class="num">5</span> 환불 기준 <span class="sub">— 진행도에 따라 정산합니다</span></div>
+    <table class="ptbl">
+      <caption>진행 단계별 환불 가이드 <span style="font-weight:600;color:var(--sub);font-size:calc(12.5px * var(--fs))">— 의뢰인 단순 변심으로 취소하는 경우</span></caption>
+      <thead><tr><th>진행 단계</th><th style="text-align:right">환불 수준</th></tr></thead>
+      <tbody>
+        <tr><td>자료 수령 전 (미착수)<span class="memo">결제 수수료 · 사전 명시된 슬롯비 등은 공제될 수 있습니다</span></td><td class="num">약 90%</td></tr>
+        <tr><td>1차 스케치 · 시안 제공 후</td><td class="num">약 50%</td></tr>
+        <tr><td>본 작업 진행 후</td><td class="num">약 20%</td></tr>
+      </tbody>
+    </table>
+    <div class="pnote">
+      <b>환불액은 이렇게 계산합니다</b>
+      <ul>
+        <li>위 비율은 <b>추정 가이드</b>이며, 실제 정산액은 <b>진행된 작업분의 가치</b>와 <b>회수 불가능한 실비</b>(구매한 외부 에셋 · 외부 서비스 비용 · 사전 명시된 슬롯비 등)를 공제해 산정합니다.</li>
+        <li>진행도는 <b>작업 로그 · 스케치 · 중간본 등 근거를 함께 제시</b>해 산정하며, 산정에 이의가 있으시면 그 근거로 <b>재산정 후 협의</b>합니다.</li>
+        <li><b>어칼 팀의 귀책</b>(합의와 명백히 다른 제작, 중대한 미이행, 작가 측 연락 두절 등)으로 취소되는 경우에는 위 가이드를 적용하지 않고 <b>상호 합의된 비율</b>로 환불합니다.</li>
+        <li>맵 · 월드 · 플러그인 · API 연동 등 <b>특수 작업</b>은 위 가이드 대신 성격에 따라 별도로 산정합니다.</li>
+        <li>환불 신청은 디스코드로 <b>입금자명 · 결제일 · 결제 금액 · 사유</b>를 알려 주시면 협의 후 진행합니다.</li>
+      </ul>
+    </div>
+
+    <div class="pstep"><span class="num">6</span> 결제 전 확인 <span class="sub">— 입금 전에 한 번만 확인해 주세요</span></div>
+    <div class="warnbox">
+      <b>맞춤 제작 상품 안내</b><br>
+      본 작업은 의뢰인의 요청에 맞추어 개별 제작되는 <b>주문 · 맞춤 제작</b>이므로,
+      <b>작업 착수 이후에는 단순 변심에 의한 청약철회(전액 환불)가 제한</b>될 수 있습니다.
+      착수 후 취소 시에는 위 <b>환불 기준</b>에 따라 정산됩니다.<br>
+      또한 파일 · 링크가 전달된 이후에는 디지털 상품 특성상 단순 변심에 의한 환불이 제한됩니다.
+      (관계 법령상 인정되는 청약철회권, 하자담보책임, 고의 · 중과실 책임은 제한되지 않습니다.)
+    </div>
+    <div class="formbox">
+      <div class="fhead"><span>입금 전 확인 문구 — 복사해서 보내 주세요</span><button class="copybtn" type="button" data-copy="위 안내(맞춤 제작 특성상 착수 후 단순 변심에 의한 청약철회가 제한된다는 점)와 환불 기준을 확인했습니다. 동의합니다.">복사</button></div>
+      <pre>위 안내(맞춤 제작 특성상 착수 후 단순 변심에 의한
+청약철회가 제한된다는 점)와 환불 기준을 확인했습니다.
+동의합니다.</pre>
+    </div>
+
+    <div class="pstep"><span class="num">7</span> 의뢰 시 필요한 정보</div>
     <div class="pnote">
       의뢰하실 때 아래 정보를 준비해 주세요.
       <ul>
@@ -636,6 +674,7 @@
         <li>결제는 <b>계좌이체만 지원</b>합니다. (현금영수증 발행 가능)</li>
         <li>작업 기간은 <b>협의</b>로 결정되며, 기본 <b>수정 2회</b>가 포함됩니다.</li>
         <li>표기된 금액은 기준 가격이며, 실제 작업 난이도에 따라 달라질 수 있습니다.</li>
+        <li>표기된 <b>가격은 모두 부가세 포함</b> 가격입니다. (현금영수증 발행 가능)</li>
         <li>문의는 디스코드로 주세요. 아이디는 <b>의뢰 시작</b> 탭에 있습니다.</li>
         <li>의뢰 시 <b>약관</b> 탭의 약관에 동의한 것으로 간주합니다.</li>
       </ul>
@@ -1553,7 +1592,8 @@ function buildCalc(){
       RUSH.map(r=>`<option value="${r.k}">${r.label}</option>`).join('')+'</select></div></div>'+
       '<div class="ctotal"><span>예상 합계</span><button class="calcreset" id="creset" type="button">초기화</button><span class="big" id="ctotal">0원</span></div>'+
       '<div class="chint">※ 닐로툰을 <b>처음</b> 맡기시는 경우 기본 비용에 <b>헤어 1 · 의상 1</b>이 포함되어 있어, 1개까지는 추가 요금이 없습니다.<br>'+
-      '※ 목록에 없는 항목은 상담 후 별도 안내드립니다. 실제 난이도에 따라 금액이 달라질 수 있는 <b>참고용 계산</b>입니다.</div>';
+      '※ 목록에 없는 항목은 상담 후 별도 안내드립니다. 실제 난이도에 따라 금액이 달라질 수 있는 <b>참고용 계산</b>입니다.<br>'+
+      '※ 표기된 <b>가격은 모두 부가세 포함</b> 가격입니다.</div>';
     box.dataset.built='1';
     box.addEventListener('input',e=>{
       if(e.target.id==='cfirst'){ calcFirst=e.target.checked; syncIncluded(); }
