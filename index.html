@@ -223,17 +223,26 @@
     letter-spacing:-3px;line-height:1;pointer-events:none}
   .flowstep:nth-child(4n)::after{content:none}
   .flowstep:last-child::after{content:none}
+  /* 줄이 바뀌는 지점: 다음 줄 첫 카드 왼쪽에 이어짐 표시 */
+  .flowstep::before{content:none;position:absolute;left:-13px;top:50%;
+    transform:translate(-50%,-50%) scaleY(2.1);
+    color:var(--accent-ink);opacity:.7;font-weight:900;font-size:calc(19px * var(--fs));
+    letter-spacing:-3px;line-height:1;pointer-events:none}
+  .flowstep:nth-child(4n+1):not(:first-child)::before{content:"›››"}
   @media(max-width:900px){
     .flow{grid-template-columns:repeat(2,1fr)}
     .flowstep:nth-child(4n)::after{content:"›››"}
     .flowstep:nth-child(2n)::after{content:none}
     .flowstep:last-child::after{content:none}
+    .flowstep:nth-child(4n+1):not(:first-child)::before{content:none}
+    .flowstep:nth-child(2n+1):not(:first-child)::before{content:"›››"}
   }
   @media(max-width:430px){
     .flow{grid-template-columns:1fr;gap:26px}
     .flowstep:nth-child(2n)::after,.flowstep:nth-child(4n)::after{content:"›››"}
     .flowstep::after{right:auto;left:50%;top:auto;bottom:-15px;transform:translate(-50%,50%) rotate(90deg) scaleY(2.1)}
     .flowstep:last-child::after{content:none}
+    .flowstep:nth-child(2n+1):not(:first-child)::before{content:none}
   }
   .flowstep{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:14px 15px;box-shadow:var(--shadow);
     display:flex;flex-direction:column;gap:6px;position:relative}
