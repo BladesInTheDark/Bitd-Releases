@@ -13,7 +13,7 @@
     --cat-outfit:#ec6a9c; --cat-hair:#9b6ddb; --cat-acc:#e0983c; --cat-unknown:#8a94a6;
     --cat-pose:#2fb0a0; --cat-avatar:#4f9de0; --cat-texture:#5cb85c; --cat-prop3d:#b08968; --cat-ambiguous:#c98aa0;
     --cat-particle:#cf5bd6; --cat-world:#4d7ef0; --cat-tool:#5f6b7a; --cat-gimmick:#ea6a4a;
-    --hair-soft:#efe7fb; --hair-ink:#6f45c4; --del-ink:#c0505a; --del-soft:rgba(192,80,90,.14);
+    --hair-soft:#efe7fb; --hair-ink:#6f45c4; --fs:1.12; --del-ink:#c0505a; --del-soft:rgba(192,80,90,.14);
   }
   :root[data-theme="dark"]{
     --bg1:#15121c; --bg2:#100e16; --card:#1f1b28; --ink:#ece8f2; --sub:#a9a1b8;
@@ -26,34 +26,34 @@
     -webkit-font-smoothing:antialiased;line-height:1.5;padding-bottom:60px}
   .wrap{max-width:1280px;margin:0 auto;padding:0 20px}
   header{padding:40px 0 16px;position:relative}
-  .eyebrow{font-size:12px;letter-spacing:.14em;font-weight:700;color:var(--accent);text-transform:uppercase}
-  h1{font-size:29px;font-weight:800;margin:8px 0 6px;letter-spacing:-.02em;padding-right:50px}
-  .lead{color:var(--sub);font-size:14.5px}
+  .eyebrow{font-size:calc(12px * var(--fs));letter-spacing:.14em;font-weight:700;color:var(--accent);text-transform:uppercase}
+  h1{font-size:calc(29px * var(--fs));font-weight:800;margin:8px 0 6px;letter-spacing:-.02em;padding-right:50px}
+  .lead{color:var(--sub);font-size:calc(14.5px * var(--fs))}
   .lead b{color:var(--ink);font-weight:700}
-  .pill{display:inline-block;background:var(--accent-soft);color:var(--accent-ink);padding:2px 10px;border-radius:999px;font-weight:700;font-size:12px}
+  .pill{display:inline-block;background:var(--accent-soft);color:var(--accent-ink);padding:2px 10px;border-radius:999px;font-weight:700;font-size:calc(12px * var(--fs))}
   .toolbar{position:sticky;top:56px;z-index:30;background:linear-gradient(160deg,var(--bg1),var(--bg2));
     padding:13px 0 11px;margin-bottom:6px;border-bottom:1px solid var(--line)}
   .searchbox{position:relative;margin-bottom:10px}
   .searchbox svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);opacity:.45}
   #q{width:100%;padding:12px 14px 12px 42px;border:1px solid var(--line);border-radius:12px;background:var(--card);
-    color:var(--ink);font-size:15px;box-shadow:var(--shadow);outline:none;transition:border-color .15s}
+    color:var(--ink);font-size:calc(15px * var(--fs));box-shadow:var(--shadow);outline:none;transition:border-color .15s}
   #q:focus{border-color:var(--accent)}
   .chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:9px}
   .chip{border:1px solid var(--line);background:var(--card);color:var(--sub);padding:7px 13px;border-radius:999px;
-    font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:7px}
+    font-size:calc(13px * var(--fs));font-weight:600;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:7px}
   .chip:hover{border-color:var(--accent)}
   .chip.on{background:var(--accent-ink);color:var(--on-fill);border-color:var(--accent-ink)}
   .chip .dot{width:8px;height:8px;border-radius:50%}
-  .chip .n{opacity:.7;font-weight:700;font-size:12px}
+  .chip .n{opacity:.7;font-weight:700;font-size:calc(12px * var(--fs))}
   .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px}
-  .rowlab{font-size:12px;color:var(--sub);font-weight:700;min-width:64px}
+  .rowlab{font-size:calc(12px * var(--fs));color:var(--sub);font-weight:700;min-width:64px}
   .selwrap{position:relative;display:inline-flex;align-items:center}
   select{appearance:none;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 30px 8px 13px;
-    border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;outline:none;font-family:inherit}
+    border-radius:10px;font-size:calc(13px * var(--fs));font-weight:600;cursor:pointer;outline:none;font-family:inherit}
   select:focus{border-color:var(--accent)}
-  .selwrap::after{content:"▾";position:absolute;right:11px;color:var(--sub);pointer-events:none;font-size:11px}
+  .selwrap::after{content:"▾";position:absolute;right:11px;color:var(--sub);pointer-events:none;font-size:calc(11px * var(--fs))}
   .tagbtn{border:1px solid var(--line);background:var(--card);color:var(--sub);padding:5px 11px;border-radius:8px;
-    font-size:12px;font-weight:600;cursor:pointer;transition:all .13s}
+    font-size:calc(12px * var(--fs));font-weight:600;cursor:pointer;transition:all .13s}
   .tagbtn:hover{border-color:var(--accent-ink);color:var(--accent-ink)}
   .tagbtn.on{background:var(--accent-ink);color:var(--on-fill);border-color:var(--accent-ink)}
   .tagbtn.hair{border-color:var(--hair-soft)}
@@ -64,12 +64,20 @@
   .tagbtn.del{border-color:var(--del-ink);color:var(--del-ink)}
   .tagbtn.del.on{background:var(--del-ink);color:#fff;border-color:var(--del-ink)}
   .themebtn{border:1px solid var(--line);background:var(--card);color:var(--ink);width:38px;height:36px;border-radius:9px;
-    font-size:16px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:all .13s}
-  .themebtn.top{position:absolute;right:0;top:42px;z-index:5;box-shadow:var(--shadow)}
+    font-size:calc(16px * var(--fs));cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:all .13s}
+  .headctl{position:absolute;right:0;top:42px;z-index:5;display:flex;gap:6px;align-items:center}
+  .fsbtn{border:1px solid var(--line);background:var(--card);color:var(--ink);height:36px;min-width:36px;padding:0 9px;
+    border-radius:9px;cursor:pointer;font-family:inherit;font-weight:800;line-height:1;
+    display:inline-flex;align-items:center;justify-content:center;transition:all .13s;box-shadow:var(--shadow)}
+  .fsbtn:hover{border-color:var(--accent-ink);color:var(--accent-ink)}
+  .fsbtn:disabled{opacity:.35;cursor:default}
+  .fsbtn.small{font-size:calc(12px * var(--fs))}
+  .fsbtn.big{font-size:calc(16px * var(--fs))}
+  .themebtn.top{box-shadow:var(--shadow)}
   .themebtn:hover{border-color:var(--accent)}
-  .reset{color:var(--accent-ink);font-size:12.5px;font-weight:700;cursor:pointer;text-decoration:none;padding:5px 4px;white-space:nowrap}
+  .reset{color:var(--accent-ink);font-size:calc(12.5px * var(--fs));font-weight:700;cursor:pointer;text-decoration:none;padding:5px 4px;white-space:nowrap}
   .reset:hover{text-decoration:underline}
-  .countbar{color:var(--sub);font-size:13px;margin:16px 0 4px}
+  .countbar{color:var(--sub);font-size:calc(13px * var(--fs));margin:16px 0 4px}
   .countbar b{color:var(--ink)}
   #viewport{position:relative}
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:18px;margin-top:10px}
@@ -81,127 +89,128 @@
   .thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s ease}
   .card:hover .thumb img{transform:scale(1.04)}
   .badges-tl{position:absolute;top:10px;left:10px;display:flex;gap:5px;flex-wrap:wrap;max-width:78%}
-  .badge-cat{padding:4px 10px;border-radius:999px;font-size:11.5px;font-weight:700;color:#fff;
+  .badge-cat{padding:4px 10px;border-radius:999px;font-size:calc(11.5px * var(--fs));font-weight:700;color:#fff;
     backdrop-filter:blur(2px);box-shadow:0 2px 6px rgba(0,0,0,.18)}
-  .badge-av{position:absolute;bottom:10px;right:10px;padding:4px 9px;border-radius:8px;font-size:11px;font-weight:700;
+  .badge-av{position:absolute;bottom:10px;right:10px;padding:4px 9px;border-radius:8px;font-size:calc(11px * var(--fs));font-weight:700;
     color:#fff;background:rgba(30,20,40,.62);backdrop-filter:blur(3px)}
   .hidebtn{position:absolute;top:9px;right:9px;width:26px;height:26px;border-radius:50%;border:none;cursor:pointer;
-    background:rgba(30,20,40,.55);color:#fff;font-size:14px;line-height:1;display:flex;align-items:center;justify-content:center;
+    background:rgba(30,20,40,.55);color:#fff;font-size:calc(14px * var(--fs));line-height:1;display:flex;align-items:center;justify-content:center;
     opacity:0;transition:opacity .15s,background .15s;backdrop-filter:blur(3px)}
   .card:hover .hidebtn{opacity:1}
   .hidebtn:hover{background:#e0507a}
   .body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:8px;flex:1}
-  .title{font-size:13.5px;font-weight:700;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+  .title{font-size:calc(13.5px * var(--fs));font-weight:700;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
     overflow:hidden;min-height:2.8em}
   .title a{color:var(--ink);text-decoration:none}
   .title a:hover{color:var(--accent-ink)}
-  .note{font-size:11px;color:var(--sub);font-style:italic;margin-top:-2px}
+  .note{font-size:calc(11px * var(--fs));color:var(--sub);font-style:italic;margin-top:-2px}
   .tags{display:flex;flex-wrap:wrap;gap:5px}
-  .tag{font-size:10.5px;font-weight:700;padding:3px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent-ink);
+  .tag{font-size:calc(10.5px * var(--fs));font-weight:700;padding:3px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent-ink);
     cursor:pointer;border:none;transition:filter .13s}
   .tag.hair{background:var(--hair-soft);color:var(--hair-ink)}
   .tag.fail{background:rgba(224,80,80,.16);color:#d9574f}
   .tag.del{background:var(--del-soft);color:var(--del-ink)}
   .tag:hover{filter:brightness(.94)}
-  .giftmark{font-size:10.5px;color:var(--sub);opacity:.72;border:1px solid var(--line);border-radius:6px;padding:1px 6px;margin-left:auto;white-space:nowrap}
+  .giftmark{font-size:calc(10.5px * var(--fs));color:var(--sub);opacity:.72;border:1px solid var(--line);border-radius:6px;padding:1px 6px;margin-left:auto;white-space:nowrap}
   .sortbtns{display:inline-flex;gap:4px}
-  .sortbtn{border:1px solid var(--line);background:var(--card);color:var(--sub);padding:8px 12px;border-radius:9px;font-size:12.5px;font-weight:700;cursor:pointer;transition:all .13s}
+  .sortbtn{border:1px solid var(--line);background:var(--card);color:var(--sub);padding:8px 12px;border-radius:9px;font-size:calc(12.5px * var(--fs));font-weight:700;cursor:pointer;transition:all .13s}
   .sortbtn:hover{border-color:var(--accent);color:var(--accent)}
   .sortbtn.on{background:var(--accent);color:#fff;border-color:var(--accent)}
-  .avwrap{font-size:11.5px;color:var(--sub)}
+  .avwrap{font-size:calc(11.5px * var(--fs));color:var(--sub)}
   .avwrap .avhead{cursor:pointer;font-weight:600;user-select:none}
   .avwrap .avhead:hover{color:var(--accent)}
   .avchips{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;align-items:center}
-  .avchip{font-size:10.5px;padding:2px 7px;border-radius:6px;background:transparent;border:1px solid var(--line);
+  .avchip{font-size:calc(10.5px * var(--fs));padding:2px 7px;border-radius:6px;background:transparent;border:1px solid var(--line);
     color:var(--sub);cursor:pointer}
   .avchip:hover{border-color:var(--accent);color:var(--accent)}
-  .avmore{font-size:10.5px;color:var(--sub);opacity:.7;padding:2px 3px}
-  .meta{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--sub);margin-top:auto}
+  .avmore{font-size:calc(10.5px * var(--fs));color:var(--sub);opacity:.7;padding:2px 3px}
+  .meta{display:flex;align-items:center;gap:6px;font-size:calc(12.5px * var(--fs));color:var(--sub);margin-top:auto}
   .meta a{color:var(--sub);text-decoration:none}
   .meta a:hover{color:var(--accent);text-decoration:underline}
   .open{display:block;text-align:center;padding:8px;border-radius:9px;border:1px solid var(--line);color:var(--sub);
-    text-decoration:none;font-size:12.5px;font-weight:700;transition:all .15s}
+    text-decoration:none;font-size:calc(12.5px * var(--fs));font-weight:700;transition:all .15s}
   .open:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
   .delnote{margin:10px 0 2px;padding:10px 14px;border:1px dashed var(--del-ink);border-radius:12px;background:var(--del-soft);
-    color:var(--del-ink);font-size:13px;font-weight:600;display:none}
+    color:var(--del-ink);font-size:calc(13px * var(--fs));font-weight:600;display:none}
   .empty{text-align:center;padding:70px 0;color:var(--sub)}
   .hiddenbar{margin-top:34px;border-top:1px dashed var(--line);padding-top:18px}
-  .hiddenbar h3{font-size:14px;color:var(--sub);margin-bottom:10px;font-weight:700}
+  .hiddenbar h3{font-size:calc(14px * var(--fs));color:var(--sub);margin-bottom:10px;font-weight:700}
   .hidden-list{display:flex;flex-wrap:wrap;gap:8px}
   .hidden-item{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);
-    border-radius:10px;padding:6px 8px 6px 6px;font-size:12px}
+    border-radius:10px;padding:6px 8px 6px 6px;font-size:calc(12px * var(--fs))}
   .hidden-item img{width:28px;height:28px;border-radius:6px;object-fit:cover}
   .hidden-item .rs{color:var(--accent);cursor:pointer;font-weight:700}
   .hidden-item .rs:hover{text-decoration:underline}
-  footer{text-align:center;color:var(--sub);font-size:12.5px;margin-top:40px;line-height:1.8}
+  footer{text-align:center;color:var(--sub);font-size:calc(12.5px * var(--fs));margin-top:40px;line-height:1.8}
 
   /* ===== 탭 ===== */
   .tabs{display:flex;gap:6px;margin:4px 0 18px;border-bottom:1px solid var(--line);
     position:sticky;top:0;z-index:40;background:var(--bg1);padding-top:6px;
     overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .tabs::-webkit-scrollbar{display:none}
-  .tab{appearance:none;border:1px solid transparent;border-bottom:none;background:transparent;color:var(--sub);
-    font-family:inherit;font-size:14.5px;font-weight:700;padding:11px 20px;border-radius:12px 12px 0 0;
-    cursor:pointer;transition:all .15s;position:relative;top:1px;white-space:nowrap;flex:none}
-  .tab:hover{color:var(--accent-ink);background:var(--accent-soft)}
-  .tab.on{background:var(--card);color:var(--accent-ink);border-color:var(--line);box-shadow:0 -2px 0 var(--accent-ink) inset}
+  .tab{appearance:none;border:1px solid var(--line);border-bottom:none;background:var(--card);color:var(--sub);
+    font-family:inherit;font-size:calc(14.5px * var(--fs));font-weight:700;padding:11px 20px;border-radius:12px 12px 0 0;
+    cursor:pointer;transition:all .15s;position:relative;top:1px;white-space:nowrap;flex:none;opacity:.72}
+  .tab:hover{color:var(--accent-ink);background:var(--accent-soft);opacity:1}
+  .tab.on{background:var(--card);color:var(--accent-ink);border-color:var(--line);opacity:1;
+    box-shadow:0 -2px 0 var(--accent-ink) inset}
   /* ===== 커미션 가격 ===== */
   #view-price>.pstep:not(:first-of-type){border-top:1px solid var(--line);padding-top:26px}
   .pintro{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;
-    box-shadow:var(--shadow);margin-bottom:14px;font-size:14.5px;line-height:1.75}
+    box-shadow:var(--shadow);margin-bottom:14px;font-size:calc(14.5px * var(--fs));line-height:1.75}
   .pintro b{color:var(--accent-ink)}
   .psum{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:22px}
   .psumcard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow)}
-  .psumcard .k{display:block;font-size:11.5px;color:var(--sub);font-weight:700;letter-spacing:.04em;margin-bottom:3px}
-  .psumcard .v{display:block;font-size:19px;font-weight:800;letter-spacing:-.02em}
-  .pstep{display:flex;align-items:center;gap:9px;font-size:17px;font-weight:800;margin:26px 0 12px;letter-spacing:-.01em}
+  .psumcard .k{display:block;font-size:calc(11.5px * var(--fs));color:var(--sub);font-weight:700;letter-spacing:.04em;margin-bottom:3px}
+  .psumcard .v{display:block;font-size:calc(19px * var(--fs));font-weight:800;letter-spacing:-.02em}
+  .pstep{display:flex;align-items:center;gap:9px;font-size:calc(17px * var(--fs));font-weight:800;margin:26px 0 12px;letter-spacing:-.01em}
   .pstep .num{display:inline-flex;align-items:center;justify-content:center;width:25px;height:25px;border-radius:50%;
-    background:var(--accent-ink);color:var(--on-fill);font-size:13px;font-weight:800;flex:none}
-  .pstep .sub{font-size:13px;font-weight:600;color:var(--sub)}
+    background:var(--accent-ink);color:var(--on-fill);font-size:calc(13px * var(--fs));font-weight:800;flex:none}
+  .pstep .sub{font-size:calc(13px * var(--fs));font-weight:600;color:var(--sub)}
   .pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
   .pcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:17px 18px;box-shadow:var(--shadow);
     display:flex;flex-direction:column;gap:7px;position:relative}
   .pcard.hl{border-color:var(--accent)}
-  .pcard .nm{font-size:14.5px;font-weight:800;line-height:1.45}
-  .pcard .pr{font-size:23px;font-weight:800;color:var(--accent-ink);letter-spacing:-.02em}
-  .pcard .ds{font-size:12.5px;color:var(--sub);line-height:1.6}
-  .pcard .inc{font-size:12px;font-weight:700;color:var(--cat-hair);background:var(--hair-soft);
+  .pcard .nm{font-size:calc(14.5px * var(--fs));font-weight:800;line-height:1.45}
+  .pcard .pr{font-size:calc(23px * var(--fs));font-weight:800;color:var(--accent-ink);letter-spacing:-.02em}
+  .pcard .ds{font-size:calc(12.5px * var(--fs));color:var(--sub);line-height:1.6}
+  .pcard .inc{font-size:calc(12px * var(--fs));font-weight:700;color:var(--cat-hair);background:var(--hair-soft);
     padding:4px 9px;border-radius:8px;align-self:flex-start}
-  .pcard .tagtop{position:absolute;top:-9px;right:14px;background:var(--accent-ink);color:var(--on-fill);font-size:11px;
+  .pcard .tagtop{position:absolute;top:-9px;right:14px;background:var(--accent-ink);color:var(--on-fill);font-size:calc(11px * var(--fs));
     font-weight:800;padding:3px 10px;border-radius:999px}
   .ptbl{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);
-    border-radius:12px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:14px;font-size:13.5px}
-  .ptbl caption{text-align:left;font-weight:800;font-size:14px;padding:13px 16px 9px;color:var(--ink);
+    border-radius:12px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:14px;font-size:calc(13.5px * var(--fs))}
+  .ptbl caption{text-align:left;font-weight:800;font-size:calc(14px * var(--fs));padding:13px 16px 9px;color:var(--ink);
     background:var(--card);border-bottom:1px solid var(--line)}
   .ptbl th,.ptbl td{padding:13px 16px;text-align:left;border-top:1px solid var(--line);vertical-align:top;line-height:1.5}
-  .ptbl thead th{background:var(--accent-soft);color:var(--accent-ink);font-size:12px;font-weight:800;
+  .ptbl thead th{background:var(--accent-soft);color:var(--accent-ink);font-size:calc(12px * var(--fs));font-weight:800;
     letter-spacing:.03em;border-top:none}
   .ptbl td.num{text-align:right;font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums}
-  .ptbl td .memo{display:block;color:var(--sub);font-size:12px;margin-top:3px;line-height:1.55}
+  .ptbl td .memo{display:block;color:var(--sub);font-size:calc(12px * var(--fs));margin-top:3px;line-height:1.55}
   .ptbl tbody tr:hover td{background:var(--accent-soft)}
   .ptbl td:first-child{font-weight:600}
   .ptbl .dash{color:var(--sub);font-weight:600}
   .pnote{background:var(--accent-soft);border:1px solid var(--line);border-radius:12px;padding:14px 17px;
-    font-size:13px;color:var(--ink);line-height:1.8;margin-bottom:14px}
+    font-size:calc(13px * var(--fs));color:var(--ink);line-height:1.8;margin-bottom:14px}
   .pnote b{color:var(--accent-ink)}
   .pnote ul{margin:6px 0 0 18px}
   .pnote li{margin:3px 0}
   /* ===== FAQ ===== */
   .faq{display:flex;flex-direction:column;gap:9px}
   .faq details{background:var(--card);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);overflow:hidden}
-  .faq summary{cursor:pointer;padding:15px 18px;font-weight:700;font-size:14.5px;list-style:none;
+  .faq summary{cursor:pointer;padding:15px 18px;font-weight:700;font-size:calc(14.5px * var(--fs));list-style:none;
     display:flex;align-items:center;gap:10px;transition:color .13s}
   .faq summary::-webkit-details-marker{display:none}
   .faq summary::before{content:"Q";flex:none;width:22px;height:22px;border-radius:50%;background:var(--accent-soft);
-    color:var(--accent-ink);font-size:12px;font-weight:800;display:inline-flex;align-items:center;justify-content:center}
+    color:var(--accent-ink);font-size:calc(12px * var(--fs));font-weight:800;display:inline-flex;align-items:center;justify-content:center}
   .faq summary:hover{color:var(--accent-ink)}
-  .faq summary::after{content:"▾";margin-left:auto;color:var(--sub);font-size:12px;transition:transform .18s}
+  .faq summary::after{content:"▾";margin-left:auto;color:var(--sub);font-size:calc(12px * var(--fs));transition:transform .18s}
   .faq details[open] summary::after{transform:rotate(180deg)}
   .faq details[open] summary{border-bottom:1px solid var(--line)}
-  .faq .ans{padding:14px 18px 16px 50px;font-size:13.5px;line-height:1.8;color:var(--sub)}
+  .faq .ans{padding:14px 18px 16px 50px;font-size:calc(13.5px * var(--fs));line-height:1.8;color:var(--sub)}
   .faq .ans b{color:var(--ink)}
   .warnbox{background:var(--hair-soft);border:1px solid var(--cat-hair);border-radius:12px;padding:14px 17px;
-    font-size:13.5px;line-height:1.75;margin-bottom:14px}
+    font-size:calc(13.5px * var(--fs));line-height:1.75;margin-bottom:14px}
   .warnbox b{color:var(--hair-ink)}
   .calc .crow.chk{gap:9px}
   .calc .crow.chk input[type=checkbox]{width:17px;height:17px;accent-color:var(--accent);cursor:pointer;flex:none}
@@ -210,131 +219,134 @@
   .flowstep{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:14px 15px;box-shadow:var(--shadow);
     display:flex;flex-direction:column;gap:6px}
   .flowstep .n{width:23px;height:23px;border-radius:50%;background:var(--accent-ink);color:var(--on-fill);
-    font-size:12px;font-weight:800;display:inline-flex;align-items:center;justify-content:center}
-  .flowstep .t{font-size:14px;font-weight:800}
-  .flowstep .d{font-size:12px;color:var(--sub);line-height:1.6}
+    font-size:calc(12px * var(--fs));font-weight:800;display:inline-flex;align-items:center;justify-content:center}
+  .flowstep .t{font-size:calc(14px * var(--fs));font-weight:800}
+  .flowstep .d{font-size:calc(12px * var(--fs));color:var(--sub);line-height:1.6}
   .checklist{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:6px 18px;box-shadow:var(--shadow);margin-bottom:14px}
   .checklist label{display:flex;gap:11px;align-items:flex-start;padding:11px 0;border-top:1px solid var(--line);
-    font-size:13.5px;line-height:1.6;cursor:pointer}
+    font-size:calc(13.5px * var(--fs));line-height:1.6;cursor:pointer}
   .checklist label:first-child{border-top:none}
   .checklist input{width:17px;height:17px;accent-color:var(--accent-ink);flex:none;margin-top:2px;cursor:pointer}
-  .checklist small{display:block;color:var(--sub);font-size:12px;margin-top:2px}
+  .checklist small{display:block;color:var(--sub);font-size:calc(12px * var(--fs));margin-top:2px}
   .formbox{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;margin-bottom:14px}
   .formbox .fhead{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;
-    border-bottom:1px solid var(--line);font-weight:800;font-size:13.5px}
-  .formbox pre{margin:0;padding:16px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px;
+    border-bottom:1px solid var(--line);font-weight:800;font-size:calc(13.5px * var(--fs))}
+  .formbox pre{margin:0;padding:16px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:calc(12.5px * var(--fs));
     line-height:1.85;white-space:pre-wrap;word-break:break-word;color:var(--ink)}
   .copybtn{appearance:none;border:1px solid var(--line);background:var(--bg1);color:var(--sub);font-family:inherit;
-    font-size:12px;font-weight:700;padding:6px 13px;border-radius:8px;cursor:pointer;transition:all .13s}
+    font-size:calc(12px * var(--fs));font-weight:700;padding:6px 13px;border-radius:8px;cursor:pointer;transition:all .13s}
   .copybtn:hover{border-color:var(--accent-ink);color:var(--accent-ink)}
   .twocol{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-bottom:14px}
   .yesno{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 18px;box-shadow:var(--shadow)}
-  .yesno h4{font-size:13.5px;margin-bottom:9px}
-  .yesno ul{margin:0;padding-left:18px;font-size:13px;line-height:1.85;color:var(--sub)}
+  .yesno h4{font-size:calc(13.5px * var(--fs));margin-bottom:9px}
+  .yesno ul{margin:0;padding-left:18px;font-size:calc(13px * var(--fs));line-height:1.85;color:var(--sub)}
   .yesno.ok h4{color:#2e8f63}
   .yesno.no h4{color:#c9483f}
   /* ==BITD-NARROW-CSS== */
   body.narrow header,body.narrow .tabs,body.narrow #view-start,
-  body.narrow #view-price,body.narrow #view-faq{max-width:940px;margin-left:auto;margin-right:auto}
+  body.narrow #view-price,body.narrow #view-faq,body.narrow #view-terms{max-width:940px;margin-left:auto;margin-right:auto}
   body.narrow .tabs{padding-left:0;padding-right:0}
   /* ==BITD-CONTACT-CSS== */
   .contacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:11px;margin-bottom:12px}
   .ccard{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:15px 16px;box-shadow:var(--shadow);
     display:flex;flex-direction:column;gap:9px}
-  .ccard .cwho{font-size:14.5px;font-weight:800}
-  .ccard .crole{font-size:11.5px;color:var(--sub);font-weight:700;margin-top:-6px}
+  .ccard .cwho{font-size:calc(14.5px * var(--fs));font-weight:800}
+  .ccard .crole{font-size:calc(11.5px * var(--fs));color:var(--sub);font-weight:700;margin-top:-6px}
   .ccard .cid{display:flex;align-items:center;gap:8px}
   .ccard .cid code{flex:1;min-width:0;background:var(--bg1);border:1px solid var(--line);border-radius:8px;
-    padding:8px 11px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;font-weight:700;
+    padding:8px 11px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:calc(13px * var(--fs));font-weight:700;
     color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .dcbadge{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:800;color:var(--accent-ink);
+  .dcbadge{display:inline-flex;align-items:center;gap:6px;font-size:calc(11.5px * var(--fs));font-weight:800;color:var(--accent-ink);
     background:var(--accent-soft);padding:3px 9px;border-radius:999px;align-self:flex-start}
   /* ==BITD-TERMS-CSS== */
   .termsbox{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);
-    max-height:560px;overflow-y:auto;padding:4px 20px 20px;scroll-behavior:smooth}
-  .termsbox .toc{display:flex;flex-wrap:wrap;gap:4px;position:sticky;top:0;background:var(--card);
+    padding:4px 20px 20px}
+  .termsbox .toc{display:flex;flex-wrap:wrap;gap:4px;position:sticky;top:56px;background:var(--card);
     padding:12px 0 10px;border-bottom:1px solid var(--line);margin-bottom:6px;z-index:2}
-  .termsbox .toc a{font-size:11px;font-weight:700;color:var(--sub);text-decoration:none;padding:3px 7px;
+  .termsbox .toc a{font-size:calc(11px * var(--fs));font-weight:700;color:var(--sub);text-decoration:none;padding:3px 7px;
     border-radius:6px;background:var(--bg1);white-space:nowrap}
   .termsbox .toc a:hover{background:var(--accent-soft);color:var(--accent-ink)}
-  .termsbox h3.termsec{font-size:15.5px;font-weight:800;margin:20px 0 8px;padding-top:14px;border-top:1px solid var(--line);scroll-margin-top:64px}
-  .termsbox h4.art{font-size:13.5px;font-weight:800;color:var(--accent-ink);margin:16px 0 6px;scroll-margin-top:64px}
-  .termsbox p{font-size:13px;line-height:1.85;color:var(--sub);margin:5px 0;max-width:82ch}
-  .termsbox ul.tlist li{max-width:82ch}
+  .termsbox h3.termsec{font-size:calc(15.5px * var(--fs));font-weight:800;margin:20px 0 8px;padding-top:14px;border-top:1px solid var(--line);scroll-margin-top:120px}
+  .termsbox h4.art{font-size:calc(13.5px * var(--fs));font-weight:800;color:var(--accent-ink);margin:16px 0 6px;scroll-margin-top:120px}
+  .calcnote{font-size:calc(13px * var(--fs));color:var(--sub);margin:0 0 10px;line-height:1.7}
+  .calcnote b{color:var(--accent-ink)}
+  .termsbox p{font-size:calc(13px * var(--fs));line-height:1.85;color:var(--sub);margin:5px 0;max-width:82ch;
+    overflow-wrap:anywhere;word-break:break-word}
+  .termsbox ul.tlist li{max-width:82ch;overflow-wrap:anywhere;word-break:break-word}
   .termsbox p b,.termsbox li b{color:var(--ink)}
-  .termsbox p.tquote{background:var(--accent-soft);border-radius:9px;padding:10px 13px;color:var(--ink);font-size:13px}
-  .termsbox ul.tlist{margin:6px 0 6px 18px;font-size:13px;line-height:1.85;color:var(--sub)}
+  .termsbox p.tquote{background:var(--accent-soft);border-radius:9px;padding:10px 13px;color:var(--ink);font-size:calc(13px * var(--fs))}
+  .termsbox ul.tlist{margin:6px 0 6px 18px;font-size:calc(13px * var(--fs));line-height:1.85;color:var(--sub)}
   .termsbox ul.tlist li{margin:5px 0}
   /* ==BITD-FAQSEARCH-CSS== */
   .faqsearch{position:relative;margin-bottom:14px}
   .faqsearch input{width:100%;padding:12px 14px 12px 40px;border:1px solid var(--line);border-radius:12px;
-    background:var(--card);color:var(--ink);font-size:14.5px;font-family:inherit;box-shadow:var(--shadow);outline:none}
+    background:var(--card);color:var(--ink);font-size:calc(14.5px * var(--fs));font-family:inherit;box-shadow:var(--shadow);outline:none}
   .faqsearch input:focus{border-color:var(--accent-ink)}
   .faqsearch svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);opacity:.45}
   .faqitem{background:var(--card);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);
     padding:15px 18px 16px;margin-bottom:9px}
-  .faqitem .q{font-weight:800;font-size:14.5px;display:flex;gap:10px;align-items:flex-start;margin-bottom:8px}
+  .faqitem .q{font-weight:800;font-size:calc(14.5px * var(--fs));display:flex;gap:10px;align-items:flex-start;margin-bottom:8px}
   .faqitem .q::before{content:"Q";flex:none;width:22px;height:22px;border-radius:50%;background:var(--accent-soft);
-    color:var(--accent-ink);font-size:12px;font-weight:800;display:inline-flex;align-items:center;justify-content:center}
-  .faqitem .ans{font-size:13.5px;line-height:1.8;color:var(--sub);padding-left:32px}
+    color:var(--accent-ink);font-size:calc(12px * var(--fs));font-weight:800;display:inline-flex;align-items:center;justify-content:center}
+  .faqitem .ans{font-size:calc(13.5px * var(--fs));line-height:1.8;color:var(--sub);padding-left:32px}
   .faqitem .ans b{color:var(--ink)}
   .faqitem mark{background:var(--accent-soft);color:var(--accent-ink);font-weight:800;padding:0 2px;border-radius:3px}
-  .faqempty{text-align:center;color:var(--sub);font-size:14px;padding:30px 0}
+  .faqempty{text-align:center;color:var(--sub);font-size:calc(14px * var(--fs));padding:30px 0}
   /* ==BITD-STEPPER-CSS== */
   .stepper{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:10px;overflow:hidden;flex:none}
   .stepper button{appearance:none;border:none;background:var(--bg1);color:var(--ink);width:34px;height:34px;
-    font-size:17px;font-weight:700;line-height:1;cursor:pointer;transition:background .12s;font-family:inherit}
+    font-size:calc(17px * var(--fs));font-weight:700;line-height:1;cursor:pointer;transition:background .12s;font-family:inherit}
   .stepper button:hover{background:var(--accent-soft);color:var(--accent-ink)}
   .stepper input{width:40px;height:34px;border:none;border-left:1px solid var(--line);border-right:1px solid var(--line);
-    background:var(--card);color:var(--ink);text-align:center;font-family:inherit;font-size:13.5px;font-weight:700;
+    background:var(--card);color:var(--ink);text-align:center;font-family:inherit;font-size:calc(13.5px * var(--fs));font-weight:700;
     outline:none;-moz-appearance:textfield}
   .stepper input::-webkit-outer-spin-button,.stepper input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
   /* 견적 계산기 */
   .calc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
   .calc .crow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0;
-    border-top:1px solid var(--line);font-size:13.5px}
+    border-top:1px solid var(--line);font-size:calc(13.5px * var(--fs))}
   .calc .crow:first-of-type{border-top:none}
   .calc .cname{flex:1;min-width:0}
-  .calc .cname small{display:block;color:var(--sub);font-size:11.5px;margin-top:2px}
-  .calc .cprice{color:var(--sub);font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .calc .cname small{display:block;color:var(--sub);font-size:calc(11.5px * var(--fs));margin-top:2px}
+  .calc .cprice{color:var(--sub);font-size:calc(12.5px * var(--fs));white-space:nowrap;font-variant-numeric:tabular-nums}
   .calc input[type=number]{width:62px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;
-    background:var(--bg1);color:var(--ink);font-family:inherit;font-size:13px;font-weight:700;text-align:center;outline:none}
+    background:var(--bg1);color:var(--ink);font-family:inherit;font-size:calc(13px * var(--fs));font-weight:700;text-align:center;outline:none}
   .calc input[type=number]:focus{border-color:var(--accent)}
-  .calc .cgroup{font-size:11.5px;font-weight:800;letter-spacing:.06em;color:var(--sub);
+  .calc .cgroup{font-size:calc(11.5px * var(--fs));font-weight:800;letter-spacing:.06em;color:var(--sub);
     margin:16px 0 2px;padding-top:12px;border-top:1px solid var(--line)}
   .calc .cgroup:first-child{margin-top:0;padding-top:0;border-top:none}
   .calc .crow.active{background:var(--accent-soft);margin:0 -10px;padding-left:10px;padding-right:10px;border-radius:8px}
-  .calc .csub{font-size:12px;font-weight:800;color:var(--accent-ink);min-width:74px;text-align:right;
+  .calc .csub{font-size:calc(12px * var(--fs));font-weight:800;color:var(--accent-ink);min-width:74px;text-align:right;
     font-variant-numeric:tabular-nums}
   .calc .ctotal{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-top:14px;padding:14px 0 2px;
-    border-top:2px solid var(--accent-ink);font-size:15px;font-weight:800;
+    border-top:2px solid var(--accent-ink);font-size:calc(15px * var(--fs));font-weight:800;
     position:sticky;bottom:0;background:var(--card)}
   .calcreset{appearance:none;border:1px solid var(--line);background:var(--card);color:var(--sub);font-family:inherit;
-    font-size:12px;font-weight:700;padding:6px 12px;border-radius:8px;cursor:pointer;transition:all .13s}
+    font-size:calc(12px * var(--fs));font-weight:700;padding:6px 12px;border-radius:8px;cursor:pointer;transition:all .13s}
   .calcreset:hover{border-color:var(--accent-ink);color:var(--accent-ink)}
-  .calc .ctotal .big{font-size:27px;color:var(--accent-ink);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-  .calc .chint{font-size:12px;color:var(--sub);margin-top:9px;line-height:1.65}
+  .calc .ctotal .big{font-size:calc(27px * var(--fs));color:var(--accent-ink);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .calc .chint{font-size:calc(12px * var(--fs));color:var(--sub);margin-top:9px;line-height:1.65}
   .cta{display:inline-flex;align-items:center;gap:8px;background:var(--accent-ink);color:var(--on-fill);text-decoration:none;
-    padding:13px 22px;border-radius:12px;font-weight:800;font-size:14.5px;box-shadow:var(--shadow);margin-top:4px}
+    padding:13px 22px;border-radius:12px;font-weight:800;font-size:calc(14.5px * var(--fs));box-shadow:var(--shadow);margin-top:4px}
   .cta:hover{filter:brightness(1.07)}
   @media(max-width:560px){
-    .ptbl th,.ptbl td{padding:9px 11px;font-size:12.5px}
-    .tab{padding:10px 11px;font-size:13px}
+    .ptbl th,.ptbl td{padding:9px 11px;font-size:calc(12.5px * var(--fs))}
+    .tab{padding:10px 11px;font-size:calc(13px * var(--fs))}
     /* 기본 옵션 select 행은 좁은 화면에서 세로 배치 */
     .calc .crow:first-of-type{flex-wrap:wrap}
     .calc .crow .selwrap{width:100%}
     .calc .crow .selwrap select{width:100%}
-    .calc .cprice{font-size:12px}
+    .calc .cprice{font-size:calc(12px * var(--fs))}
     .calc input[type=number]{min-height:42px;width:60px}
-    .stepper button{width:42px;height:42px;font-size:19px}
+    .stepper button{width:42px;height:42px;font-size:calc(19px * var(--fs))}
     .calc .crow{flex-wrap:wrap}
     .calc .cname{flex:1 1 100%}
     .calc .cprice{margin-right:auto}
     .calc .csub{min-width:0}
     .calc .crow{padding:10px 0}
     .psum{grid-template-columns:repeat(2,1fr)}
-    .pstep{font-size:16px}
-    h1{font-size:24px}
+    .pstep{font-size:calc(16px * var(--fs))}
+    h1{font-size:calc(24px * var(--fs))}
   }
   /* ===== 인쇄 ===== */
   @media print{
@@ -354,14 +366,20 @@
     <p class="lead" id="lead-price" style="display:none">3D 아바타 작업 · 와루도 / 멜리고 / VRChat / VSeeFace <span class="pill">2026-08-21 기준</span></p>
     <p class="lead" id="lead-faq" style="display:none">의뢰 전에 자주 나오는 질문들을 정리했습니다</p>
     <p class="lead" id="lead-start" style="display:none">처음이시라면 여기부터 — 진행 순서와 준비물을 안내합니다</p>
-    <button class="themebtn top" id="themeToggle" title="다크모드 전환">🌙</button>
+    <p class="lead" id="lead-terms" style="display:none">어둠속의칼날 팀 작업 의뢰 통합 계약 · 약관 (전문)</p>
+    <div class="headctl">
+      <button class="fsbtn small" id="fsdown" type="button" title="글자 작게" aria-label="글자 작게">가−</button>
+      <button class="fsbtn big" id="fsup" type="button" title="글자 크게" aria-label="글자 크게">가+</button>
+      <button class="themebtn top" id="themeToggle" title="다크모드 전환">🌙</button>
+    </div>
   </header>
 
   <div class="tabs">
     <button class="tab on" data-view="start">🚀 의뢰 시작</button>
-    <button class="tab" data-view="price">💰 커미션 가격</button>
+    <button class="tab" data-view="price">💰 커미션 견적</button>
     <button class="tab" data-view="library">📚 보유 상품</button>
     <button class="tab" data-view="faq">💬 자주 묻는 질문</button>
+    <button class="tab" data-view="terms">📜 약관</button>
   </div>
 
   <div id="view-library">
@@ -421,7 +439,7 @@
       <label><input type="checkbox"><span><b>추가할 의상 · 헤어 상품을 구매하셨나요?</b><small>상품 링크와 함께, 원하시는 색상 · 파츠 조합도 알려 주세요</small></span></label>
       <label><input type="checkbox"><span><b>참고 이미지가 있나요?</b><small>원하시는 분위기나 예시 스크린샷이 있으면 훨씬 정확해집니다</small></span></label>
       <label><input type="checkbox"><span><b>희망 일정이 있나요?</b><small>급하신 경우 빠른 마감(1.5배 / 2배) 옵션이 있습니다</small></span></label>
-      <label><input type="checkbox"><span><b>약관을 확인하셨나요?</b><small>의뢰 시 커미션 가격 탭 하단의 약관에 동의한 것으로 간주합니다</small></span></label>
+      <label><input type="checkbox"><span><b>약관을 확인하셨나요?</b><small>의뢰 시 '약관' 탭의 약관에 동의한 것으로 간주합니다</small></span></label>
     </div>
 
     <div class="pstep"><span class="num">3</span> 문의 양식 <span class="sub">— 복사해서 채워 주세요</span></div>
@@ -477,7 +495,7 @@
         <li><b>유니티 프로젝트 원본은 납품 대상이 아닙니다.</b> 사용 가능한 완성 결과물(warudo, meligo 파일 등)을 전달드립니다.</li>
         <li>확인 요청 후 <b>회신이 없으면 해당 단계가 승인된 것으로</b> 보고 다음 단계로 진행합니다.</li>
         <li>작업 착수 이후 단순 변심에 의한 <b>전액 환불은 어렵습니다.</b> 진행도에 따라 정산됩니다.</li>
-        <li>자세한 내용은 <b>커미션 가격</b> 탭 하단의 약관을 확인해 주세요.</li>
+        <li>자세한 내용은 <b>약관</b> 탭을 확인해 주세요.</li>
       </ul>
     </div>
 
@@ -508,7 +526,7 @@
 
     <div class="pintro">
       어칼 팀에서 작업을 수주하는 비용입니다.<br>
-      작업을 맡길 시 맨 아래에 있는 약관 등에 동의한 것으로 간주합니다.
+      작업을 맡길 시 해당 페이지 '약관' 탭에 있는 약관에 동의한 것으로 간주합니다.
     </div>
 
     <div class="psum">
@@ -517,7 +535,11 @@
       <div class="psumcard"><span class="k">결제</span><span class="v">계좌이체만</span></div>
     </div>
 
-    <div class="pstep"><span class="num">1</span> 기본 비용 <span class="sub">— 아래 중 <b>1개</b></span></div>
+    <div class="pstep"><span class="num">1</span> 예상 견적 <span class="sub">— 대략적인 계산용</span></div>
+    <p class="calcnote">자세한 비용 내역은 <b>계산기 아래</b>를 참고해주세요.</p>
+    <div class="calc" id="calc"></div>
+
+    <div class="pstep"><span class="num">2</span> 기본 비용 <span class="sub">— 아래 중 <b>1개</b></span></div>
     <div class="warnbox">
       <b>처음 맡기실 때만 발생하는 비용입니다.</b><br>
       어칼 팀에 <b>이전에 작업을 맡기신 적이 있다면 기본 비용은 없습니다.</b> 추가 옵션 비용만 계산됩니다.
@@ -547,10 +569,10 @@
       </div>
     </div>
 
-    <div class="pstep"><span class="num">2</span> 추가 옵션 <span class="sub">— 필요한 만큼</span></div>
+    <div class="pstep"><span class="num">3</span> 추가 옵션 <span class="sub">— 필요한 만큼</span></div>
 
     <table class="ptbl">
-      <caption>헤어 · 의상 추가 <span style="font-weight:600;color:var(--sub);font-size:12.5px">— 작업 종류에 따라 단가가 다릅니다</span></caption>
+      <caption>헤어 · 의상 추가 <span style="font-weight:600;color:var(--sub);font-size:calc(12.5px * var(--fs))">— 작업 종류에 따라 단가가 다릅니다</span></caption>
       <thead><tr><th>항목</th><th style="text-align:right">닐로툰 · VRChat(포이요미)</th><th style="text-align:right">릴툰 · 빌트인</th></tr></thead>
       <tbody>
         <tr><td>헤어 추가</td><td class="num">15,000원</td><td class="num">8,000원</td></tr>
@@ -590,7 +612,7 @@
       </tbody>
     </table>
 
-    <div class="pstep"><span class="num">3</span> 빠른 마감 <span class="sub">— 일정을 당길 경우</span></div>
+    <div class="pstep"><span class="num">4</span> 빠른 마감 <span class="sub">— 일정을 당길 경우</span></div>
     <table class="ptbl">
       <thead><tr><th>마감 기한</th><th style="text-align:right">비용</th></tr></thead>
       <tbody>
@@ -599,8 +621,6 @@
       </tbody>
     </table>
 
-    <div class="pstep"><span class="num">4</span> 예상 견적 <span class="sub">— 대략적인 계산용</span></div>
-    <div class="calc" id="calc"></div>
 
     <div class="pstep"><span class="num">5</span> 의뢰 시 필요한 정보</div>
     <div class="pnote">
@@ -622,10 +642,60 @@
         <li>작업 기간은 <b>협의</b>로 결정되며, 기본 <b>수정 2회</b>가 포함됩니다.</li>
         <li>표기된 금액은 기준 가격이며, 실제 작업 난이도에 따라 달라질 수 있습니다.</li>
         <li>문의는 디스코드로 주세요. 아이디는 <b>의뢰 시작</b> 탭에 있습니다.</li>
+        <li>의뢰 시 <b>약관</b> 탭의 약관에 동의한 것으로 간주합니다.</li>
       </ul>
     </div>
 
-    <div class="pstep"><span class="num">6</span> 약관 <span class="sub">— 의뢰 시 아래 약관에 동의한 것으로 간주합니다</span></div>
+  </div><!-- /view-price -->
+
+  <div id="view-faq" style="display:none">
+    <div class="pintro">
+      자주 묻는 질문을 모았습니다. 아래에 없는 내용은 문의해 주세요.
+    </div>
+    <div class="faqsearch">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="faqq" type="text" placeholder="키워드로 검색…  (예: 환불, 기간, 결제)" autocomplete="off">
+    </div>
+    <div class="faq" id="faqlist">
+      <div class="faqitem"><div class="q">문의는 어디로 하나요?</div>
+        <div class="ans"><b>디스코드</b>로 연락 주세요. 어둠속의칼날 <b>bladesinthedark</b> · 언어초밥 <b>kotonohazushi</b> · 티라바 <b>tirava2000</b><br>아이디는 <b>의뢰 시작</b> 탭에서 복사하실 수 있습니다.</div></div>
+      <div class="faqitem"><div class="q">어칼 팀에 세 명의 작가가 있는데, 누구한테 맡겨야 하나요?</div>
+        <div class="ans"><b>어둠속의칼날 · 언어초밥 · 티라바</b> 순으로 경험이 많고, 그만큼 차 있는 스케줄도 많습니다.<br>포트폴리오는 각 작가의 <b>X</b>나 <b>아트머그</b>에서 확인하실 수 있으며, 여러 가지를 고려해서 판단해 주시면 되겠습니다!</div></div>
+      <div class="faqitem"><div class="q">API 작업을 맡기고 싶어요. 어떻게 하면 되나요?</div>
+        <div class="ans">현재 API 작업은 <b>섄디한</b>(discord: <b>shandyhan</b>)님께 인계하고 있습니다.</div></div>
+      <div class="faqitem"><div class="q">볼륨(조명 세팅) 작업을 맡기고 싶어요. 어떻게 하면 되나요?</div>
+        <div class="ans">현재 볼륨(조명 세팅) 작업은 <b>아이세</b>(discord: <b>ays_e_</b>)님께 인계하고 있습니다.</div></div>
+      <div class="faqitem"><div class="q">다른 종류의 작업도 하시나요? (페이셜, 시네머신, 쇼츠, 팬캐릭터 제작, 카툰풍 텍스쳐, 월드, 맵 제작 등)</div>
+        <div class="ans">직접 하지는 않습니다만, 원하신다면 <b>믿을 만한 작가를 소개</b>시켜 드릴 수 있으니 <b>어둠속의칼날</b>에게 문의 부탁드립니다.</div></div>
+      <div class="faqitem"><div class="q">전에도 작업을 맡겼는데, 기본 비용을 또 내야 하나요?</div>
+        <div class="ans">아니요. <b>기본 비용은 어칼 팀에 처음 맡기실 때 한 번만</b> 발생합니다. 이미 작업하신 적이 있다면 기본 비용 없이 <b>추가 옵션 비용만</b> 계산됩니다.</div></div>
+      <div class="faqitem"><div class="q">작업 기간은 얼마나 걸리나요?</div>
+        <div class="ans">작업량과 일정에 따라 <b>협의</b>로 결정됩니다. 급하신 경우 <b>빠른 마감</b> 옵션(일주일 이내 1.5배 / 2~3일 이내 2배)을 이용하실 수 있습니다.</div></div>
+      <div class="faqitem"><div class="q">결제는 어떻게 하나요?</div>
+        <div class="ans"><b>계좌이체만 지원</b>하며, <b>현금영수증 발행이 가능</b>합니다.</div></div>
+      <div class="faqitem"><div class="q">가격표에 없는 작업도 맡길 수 있나요?</div>
+        <div class="ans">네. 목록에 없는 항목은 <b>상담 후 별도로 금액을 안내</b>드립니다. 원하시는 작업 내용을 먼저 알려 주세요.</div></div>
+      <div class="faqitem"><div class="q">수정은 몇 번까지 되나요?</div>
+        <div class="ans">기본 <b>2회</b>가 포함되어 있습니다. 그 이상은 작업량에 따라 협의 후 진행합니다.<br>단, <b>작가의 실수로 인한 수정은 횟수에 포함되지 않습니다.</b></div></div>
+      <div class="faqitem"><div class="q">어떤 프로그램을 지원하나요?</div>
+        <div class="ans">와루도(닐로툰 · 릴툰), 멜리고(닐로툰 · 릴툰), VRChat(포이요미 · 릴툰), VSeeFace를 지원합니다. 주력은 <b>와루도 · 멜리고용 닐로툰</b>입니다.</div></div>
+      <div class="faqitem"><div class="q">의상이나 헤어는 제가 직접 구매해야 하나요?</div>
+        <div class="ans">네, 사용하실 상품은 의뢰인이 준비해 주셔야 합니다. 상품 링크와 원하시는 색상 · 파츠 디테일을 함께 알려 주세요.<br>어칼 팀이 보유 중인 상품은 <b>보유 상품</b> 탭에서 확인하실 수 있습니다.<br>보유 중이지 않은 상품은 <b>해당 상품 비용만큼 어칼 팀에 추가로 지불</b>해 주셔야 합니다. (상품 구매 비용으로 작업 비용과는 별도로 청구되며, 주문번호 등의 사정으로 <b>기프트로는 받지 않고 있습니다.</b>)</div></div>
+      <div class="faqitem"><div class="q">물리(마지카 클로스)는 꼭 넣어야 하나요?</div>
+        <div class="ans">필수는 아닙니다. 필요하신 항목에만 넣으시면 되고, 최초 세팅 비용 이후 항목별로 난이도에 따라 계산됩니다.</div></div>
+      <div class="faqitem"><div class="q">작업 중간에 취소하면 환불되나요?</div>
+        <div class="ans">진행도에 따라 정산됩니다. 이미 진행된 작업분과 회수가 어려운 실비를 공제한 뒤 환불되며, <b>착수 이후 단순 변심에 의한 전액 환불은 어렵습니다.</b> 자세한 기준은 <b>약관</b> 탭을 확인해 주세요.</div></div>
+      <div class="faqitem"><div class="q">유니티 프로젝트 원본 파일도 받을 수 있나요?</div>
+        <div class="ans">원본 프로젝트 · 씬 · 편집 가능한 원본 파일은 <b>납품 대상이 아닙니다.</b> 사용하시는 프로그램에서 바로 쓸 수 있는 완성 결과물(warudo, meligo 파일 등)을 전달드립니다. 인수인계가 필요하시면 별도로 안내드립니다.</div></div>
+    </div>
+    <div class="faqempty" id="faqempty" style="display:none">검색 결과가 없어요 🔍</div>
+  </div><!-- /view-faq -->
+
+  <div id="view-terms" style="display:none">
+    <div class="pintro">
+      작업을 맡기실 경우 아래 약관에 <b>동의한 것으로 간주</b>합니다.<br>
+      조항 번호를 누르면 해당 조로 바로 이동합니다.
+    </div>
     <div class="termsbox" id="terms-slot">
 <div class="toc"><a href="#art-1">제1조</a><a href="#art-2">제2조</a><a href="#art-3">제3조</a><a href="#art-4">제4조</a><a href="#art-5">제5조</a><a href="#art-6">제6조</a><a href="#art-7">제7조</a><a href="#art-8">제8조</a><a href="#art-9">제9조</a><a href="#art-10">제10조</a><a href="#art-11">제11조</a><a href="#art-12">제12조</a><a href="#art-13">제13조</a><a href="#art-14">제14조</a><a href="#art-15">제15조</a><a href="#art-16">제16조</a><a href="#art-17">제17조</a><a href="#art-18">제18조</a><a href="#art-19">제19조</a><a href="#art-20">제20조</a><a href="#art-21">제21조</a><a href="#art-22">제22조</a><a href="#art-23">제23조</a><a href="#art-24">제24조</a><a href="#art-25">제25조</a><a href="#art-26">제26조</a><a href="#art-27">제27조</a><a href="#art-28">제28조</a><a href="#art-29">제29조</a><a href="#art-30">제30조</a><a href="#art-31">제31조</a><a href="#art-32">제32조</a><a href="#art-33">제33조</a><a href="#art-34">제34조</a><a href="#art-35">제35조</a><a href="#art-36">제36조</a><a href="#art-37">제37조</a><a href="#art-38">제38조</a><a href="#art-39">제39조</a><a href="#art-40">제40조</a><a href="#art-41">제41조</a><a href="#art-42">제42조</a><a href="#art-43">제43조</a><a href="#art-44">제44조</a><a href="#art-45">제45조</a><a href="#art-46">제46조</a><a href="#art-47">제47조</a><a href="#art-48">제48조</a><a href="#art-49">제49조</a><a href="#art-50">제50조</a><a href="#art-51">제51조</a><a href="#art-52">제52조</a><a href="#art-53">제53조</a><a href="#art-54">제54조</a><a href="#art-55">제55조</a><a href="#art-56">제56조</a><a href="#art-57">제57조</a><a href="#art-58">제58조</a><a href="#art-59">제59조</a><a href="#art-60">제60조</a><a href="#art-61">제61조</a><a href="#art-62">제62조</a><a href="#art-63">제63조</a><a href="#art-64">제64조</a><a href="#art-65">제65조</a><a href="#art-66">제66조</a><a href="#art-67">제67조</a></div>
 <p class="tquote"><b>아래 내용에 동의하는 분만 신청 부탁드립니다.</b></p>
@@ -1124,42 +1194,7 @@
 <p class="cl">③ 본 계약은 의뢰자의 전자서명 또는 전자적 동의가 완료된 날, 또는 의뢰자가 본 계약에 동의하고 대금을 지급하거나 작업 개시를 요청한 날부터 효력이 발생한다.</p>
 <p>---</p>
     </div>
-  </div><!-- /view-price -->
-
-  <div id="view-faq" style="display:none">
-    <div class="pintro">
-      자주 묻는 질문을 모았습니다. 아래에 없는 내용은 문의해 주세요.
-    </div>
-    <div class="faqsearch">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-      <input id="faqq" type="text" placeholder="키워드로 검색…  (예: 환불, 기간, 결제)" autocomplete="off">
-    </div>
-    <div class="faq" id="faqlist">
-      <div class="faqitem"><div class="q">문의는 어디로 하나요?</div>
-        <div class="ans"><b>디스코드</b>로 연락 주세요. 어둠속의칼날 <b>bladesinthedark</b> · 언어초밥 <b>kotonohazushi</b> · 티라바 <b>tirava2000</b><br>아이디는 <b>의뢰 시작</b> 탭에서 복사하실 수 있습니다.</div></div>
-      <div class="faqitem"><div class="q">전에도 작업을 맡겼는데, 기본 비용을 또 내야 하나요?</div>
-        <div class="ans">아니요. <b>기본 비용은 어칼 팀에 처음 맡기실 때 한 번만</b> 발생합니다. 이미 작업하신 적이 있다면 기본 비용 없이 <b>추가 옵션 비용만</b> 계산됩니다.</div></div>
-      <div class="faqitem"><div class="q">작업 기간은 얼마나 걸리나요?</div>
-        <div class="ans">작업량과 일정에 따라 <b>협의</b>로 결정됩니다. 급하신 경우 <b>빠른 마감</b> 옵션(일주일 이내 1.5배 / 2~3일 이내 2배)을 이용하실 수 있습니다.</div></div>
-      <div class="faqitem"><div class="q">결제는 어떻게 하나요?</div>
-        <div class="ans"><b>계좌이체만 지원</b>하며, <b>현금영수증 발행이 가능</b>합니다.</div></div>
-      <div class="faqitem"><div class="q">가격표에 없는 작업도 맡길 수 있나요?</div>
-        <div class="ans">네. 목록에 없는 항목은 <b>상담 후 별도로 금액을 안내</b>드립니다. 원하시는 작업 내용을 먼저 알려 주세요.</div></div>
-      <div class="faqitem"><div class="q">수정은 몇 번까지 되나요?</div>
-        <div class="ans">기본 <b>2회</b>가 포함되어 있습니다. 그 이상은 작업량에 따라 협의 후 진행합니다.<br>단, <b>작가의 실수로 인한 수정은 횟수에 포함되지 않습니다.</b></div></div>
-      <div class="faqitem"><div class="q">어떤 프로그램을 지원하나요?</div>
-        <div class="ans">와루도(닐로툰 · 릴툰), 멜리고(닐로툰 · 릴툰), VRChat(포이요미 · 릴툰), VSeeFace를 지원합니다. 주력은 <b>와루도 · 멜리고용 닐로툰</b>입니다.</div></div>
-      <div class="faqitem"><div class="q">의상이나 헤어는 제가 직접 구매해야 하나요?</div>
-        <div class="ans">네, 사용하실 상품은 의뢰인이 준비해 주셔야 합니다. 상품 링크와 원하시는 색상 · 파츠 디테일을 함께 알려 주세요.<br>어칼 팀이 보유 중인 상품은 <b>보유 상품</b> 탭에서 확인하실 수 있습니다.<br>보유 중이지 않은 상품은 <b>해당 상품 비용만큼 어칼 팀에 추가로 지불</b>해 주셔야 합니다. (상품 구매 비용으로 작업 비용과는 별도로 청구되며, 주문번호 등의 사정으로 <b>기프트로는 받지 않고 있습니다.</b>)</div></div>
-      <div class="faqitem"><div class="q">물리(마지카 클로스)는 꼭 넣어야 하나요?</div>
-        <div class="ans">필수는 아닙니다. 필요하신 항목에만 넣으시면 되고, 최초 세팅 비용 이후 항목별로 난이도에 따라 계산됩니다.</div></div>
-      <div class="faqitem"><div class="q">작업 중간에 취소하면 환불되나요?</div>
-        <div class="ans">진행도에 따라 정산됩니다. 이미 진행된 작업분과 회수가 어려운 실비를 공제한 뒤 환불되며, <b>착수 이후 단순 변심에 의한 전액 환불은 어렵습니다.</b> 자세한 기준은 약관을 확인해 주세요.</div></div>
-      <div class="faqitem"><div class="q">유니티 프로젝트 원본 파일도 받을 수 있나요?</div>
-        <div class="ans">원본 프로젝트 · 씬 · 편집 가능한 원본 파일은 <b>납품 대상이 아닙니다.</b> 사용하시는 프로그램에서 바로 쓸 수 있는 완성 결과물(warudo, meligo 파일 등)을 전달드립니다. 인수인계가 필요하시면 별도로 안내드립니다.</div></div>
-    </div>
-    <div class="faqempty" id="faqempty" style="display:none">검색 결과가 없어요 🔍</div>
-  </div><!-- /view-faq -->
+  </div><!-- /view-terms -->
 
   <footer>
     <span id="foot-lib">표시 중 <b id="fcount"></b>개 · 썸네일과 링크는 BOOTH에서 실시간으로 불러옵니다<br>
@@ -1167,6 +1202,7 @@
     <span id="foot-price" style="display:none">가격은 예고 없이 변경될 수 있습니다 · 목록에 없는 항목은 상담 후 별도 안내드립니다</span>
     <span id="foot-faq" style="display:none">여기에 없는 내용은 문의해 주세요</span>
     <span id="foot-start" style="display:none">문의는 디스코드로 — bladesinthedark · kotonohazushi · tirava2000</span>
+    <span id="foot-terms" style="display:none">의뢰 진행은 본 약관 전체에 대한 동의로 간주됩니다</span>
   </footer>
 </div>
 
@@ -1440,9 +1476,10 @@ render();
 /* ===== 탭 전환 (커미션 가격 / 보유 상품 / FAQ) ===== */
 const VIEWS={
   start:  {el:'view-start',   lead:'lead-start', foot:'foot-start', eyebrow:'Get Started',  title:'의뢰 시작 안내', hash:''},
-  price:  {el:'view-price',   lead:'lead-price', foot:'foot-price', eyebrow:'Commission',   title:'커미션 가격 안내', hash:'#price'},
+  price:  {el:'view-price',   lead:'lead-price', foot:'foot-price', eyebrow:'Commission',   title:'커미션 견적 안내', hash:'#price'},
   library:{el:'view-library', lead:'lead-lib',   foot:'foot-lib',   eyebrow:'Booth Library', title:'BOOTH 보유 상품 정리', hash:'#library'},
-  faq:    {el:'view-faq',     lead:'lead-faq',   foot:'foot-faq',   eyebrow:'FAQ',           title:'자주 묻는 질문', hash:'#faq'}
+  faq:    {el:'view-faq',     lead:'lead-faq',   foot:'foot-faq',   eyebrow:'FAQ',           title:'자주 묻는 질문', hash:'#faq'},
+  terms:  {el:'view-terms',   lead:'lead-terms', foot:'foot-terms', eyebrow:'Terms',         title:'약관', hash:'#terms'}
 };
 function switchView(v){
   if(!VIEWS[v]) v='start';
@@ -1465,7 +1502,11 @@ document.querySelectorAll('.tab').forEach(b=>{
     switchView(v); window.scrollTo(0,0);
   });
 });
-window.addEventListener('hashchange',()=>switchView(location.hash.replace('#','')||'start'));
+window.addEventListener('hashchange',()=>{
+  const h=location.hash.replace('#','');
+  if(VIEWS[h]) switchView(h);
+  else if(h.indexOf('art-')===0) switchView('terms');
+});
 
 /* ===== 견적 계산기 ===== */
 /* tier A = 닐로툰 · VRChat(포이요미) / tier B = 릴툰 · 빌트인 */
@@ -1592,6 +1633,23 @@ function recalc(){
   const t=document.getElementById('ctotal'); if(t) t.textContent=won(total);
 }
 
+/* ==BITD-FONTSIZE-JS== */
+(function(){
+  const KEY='booth_fs_v1', STEPS=[1,1.12,1.26,1.42], root=document.documentElement;
+  let idx=1;
+  try{ const v=parseInt(localStorage.getItem(KEY),10); if(!isNaN(v)&&v>=0&&v<STEPS.length) idx=v; }catch(e){}
+  const up=document.getElementById('fsup'), down=document.getElementById('fsdown');
+  function apply(){
+    root.style.setProperty('--fs', STEPS[idx]);
+    try{ localStorage.setItem(KEY, idx); }catch(e){}
+    if(up) up.disabled = idx>=STEPS.length-1;
+    if(down) down.disabled = idx<=0;
+  }
+  if(up) up.addEventListener('click',()=>{ if(idx<STEPS.length-1){ idx++; apply(); } });
+  if(down) down.addEventListener('click',()=>{ if(idx>0){ idx--; apply(); } });
+  apply();
+})();
+
 /* ==BITD-FAQSEARCH-JS== */
 (function(){
   const q=document.getElementById('faqq'); if(!q) return;
@@ -1644,7 +1702,10 @@ function recalc(){
   });
 })();
 
-switchView(location.hash.replace('#','')||'start');
+(function(){
+  const h=location.hash.replace('#','');
+  switchView(VIEWS[h] ? h : (h.indexOf('art-')===0 ? 'terms' : 'start'));
+})();
 </script>
 </body>
 </html>
