@@ -158,6 +158,17 @@
     font-weight:600;font-size:calc(12.5px * var(--fs));color:var(--sub);letter-spacing:.02em}
   .formbox pre{margin:0;padding:18px;font-family:var(--mono);font-size:calc(13px * var(--fs));line-height:1.85;white-space:pre-wrap;
     word-break:break-word;color:var(--ink-2)}
+  /* ==BITD-FORMEDIT-CSS== 양식을 그 자리에서 고쳐 쓰는 편집칸 */
+  .formbox .fsub{font-weight:500;color:var(--mute);margin-left:4px}
+  .formbox .fbtns{display:flex;gap:6px;flex:none}
+  .copybtn.primary{background:var(--ink);color:var(--on-fill);border-color:var(--ink)}
+  .copybtn.primary:hover{opacity:.86;color:var(--on-fill)}
+  .formbox textarea.formedit{display:block;width:100%;border:0;outline:none;resize:vertical;background:transparent;color:var(--ink);
+    font-family:var(--mono);font-size:calc(13px * var(--fs));line-height:1.85;padding:18px;min-height:200px;overflow:hidden;tab-size:4}
+  .formbox textarea.formedit:focus{background:var(--surface-2)}
+  .formbox .fhint{padding:9px 16px 11px;border-top:1px solid var(--line);font-size:calc(12.5px * var(--fs));color:var(--sub);line-height:1.6}
+  .formbox .fhint b{color:var(--ink);font-weight:600}
+  @media(max-width:640px){ .formbox .fhead{flex-wrap:wrap} .formbox .fsub{display:block;margin:2px 0 0} }
 
   /* 하는 일 / 어려운 일: 두 개의 평문 목록 */
   .twocol{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px 44px;margin:0}
@@ -546,8 +557,8 @@
     <section class="sec"><div class="sec-h"><div class="pstep"><span class="num">04</span> 문의 양식 <span class="sub">복사해서 채워 주세요</span></div></div>
     <div class="sec-b">
     <div class="formbox">
-      <div class="fhead"><span>의뢰 문의 양식</span><button class="copybtn" id="copyform" type="button">복사</button></div>
-      <pre id="formtext">■ 사용 프로그램 / 셰이더
+      <div class="fhead"><span>의뢰 문의 양식 <small class="fsub">— 이 칸에서 바로 채워 넣으세요</small></span><span class="fbtns"><button class="copybtn" id="resetform" type="button" title="수정한 내용을 지우고 처음 양식으로">기본 양식으로</button><button class="copybtn primary" id="copyform" type="button">완성본 복사</button></span></div>
+      <textarea id="formtext" class="formedit" rows="18" spellcheck="false" autocomplete="off" aria-label="의뢰 문의 양식 (수정 가능)">■ 사용 프로그램 / 셰이더
    예) 와루도 + 닐로툰
 
 ■ 아바타
@@ -570,7 +581,8 @@
    예) 특별히 급하지 않음 / ○월 ○일까지
 
 ■ 참고 이미지 · 기타 요청사항
-   </pre>
+   </textarea>
+      <div class="fhint" id="formhint">예시 줄을 지우고 내용을 적은 뒤 <b>완성본 복사</b> → 디스코드 DM에 붙여 넣으세요. 수정한 내용은 이 브라우저에 임시 저장됩니다.</div>
     </div>
     </div></section>
 
@@ -1881,6 +1893,24 @@ function recalc(){
   if(document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
 })();
 
+/* ==BITD-FORMEDIT-JS== 문의 양식: 그 자리에서 편집 · 브라우저 임시 저장 · 기본 양식으로 되돌리기 */
+(function(){
+  const ta=document.getElementById('formtext'); if(!ta || ta.tagName!=='TEXTAREA') return;
+  const KEY='booth_form_draft_v1', base=ta.defaultValue;
+  function grow(){ if(!ta.offsetParent) return; ta.style.height='auto'; ta.style.height=(ta.scrollHeight+2)+'px'; }
+  try{ const d=localStorage.getItem(KEY); if(d!==null && d!==base) ta.value=d; }catch(e){}
+  ta.addEventListener('input',()=>{ grow(); try{ if(ta.value===base) localStorage.removeItem(KEY); else localStorage.setItem(KEY,ta.value); }catch(e){} });
+  const rs=document.getElementById('resetform');
+  if(rs) rs.addEventListener('click',()=>{
+    if(ta.value!==base && !confirm('수정한 내용을 지우고 기본 양식으로 되돌릴까요?')) return;
+    ta.value=base; try{ localStorage.removeItem(KEY); }catch(e){} grow(); ta.focus();
+  });
+  grow(); window.addEventListener('resize',grow); ta.addEventListener('focus',grow);
+  // 시작 탭이 숨겨진 채 로드됐으면(해시로 다른 탭 진입) 보일 때 다시 잰다
+  document.querySelectorAll('.tab[data-view="start"],[data-goto="start"]').forEach(b=>b.addEventListener('click',()=>setTimeout(grow,0)));
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(grow);
+})();
+
 /* ==BITD-GOTO-JS== 탭이 아닌 버튼/링크로 뷰 이동 (히어로 버튼 · 브랜드) */
 document.querySelectorAll('[data-goto]').forEach(b=>{
   b.addEventListener('click',e=>{
@@ -1898,7 +1928,7 @@ document.querySelectorAll('[data-goto]').forEach(b=>{
   function flash(btn){ const old=btn.textContent; btn.textContent='복사됨 ✓'; setTimeout(()=>{btn.textContent=old;},1400); }
   document.addEventListener('click',e=>{
     const b=e.target.closest('.copybtn'); if(!b) return;
-    if(b.id==='copyform'){ const el=document.getElementById('formtext'); if(el){ copy(el.textContent); flash(b); } return; }
+    if(b.id==='copyform'){ const el=document.getElementById('formtext'); if(el){ copy(el.value!==undefined?el.value:el.textContent); flash(b); } return; }
     if(b.dataset.copy){ copy(b.dataset.copy); flash(b); }
   });
 })();
