@@ -362,6 +362,21 @@
   .termsbox ul.tlist{margin:6px 0 6px 18px;font-size:calc(14.5px * var(--fs));line-height:1.85;color:var(--ink-2)}
   .termsbox ul.tlist li{margin:6px 0}
 
+  /* ==BITD-FAQTERMS-CSS== FAQ·약관도 좌 라벨/우 본문 뼈대 (FAQ=검색, 약관=조문 목차) */
+  .sec-faq,.sec-terms{border-top:0;padding-top:26px}
+  .sec-faq .faqsearch,.sec-terms .toc{margin:14px 0 0}
+  .faqcount{font-size:calc(12.5px * var(--fs));color:var(--sub);margin-top:10px;font-variant-numeric:tabular-nums}
+  .sec-faq .faq{max-width:none}
+  .toc{max-height:calc(100vh - var(--topbar-h) - 140px);overflow-y:auto;scrollbar-width:thin;padding-right:6px;border-top:1px solid var(--line)}
+  .toc a{display:block;padding:6px 0 6px 10px;border-left:2px solid transparent;color:var(--sub);text-decoration:none;font-size:calc(12.5px * var(--fs));line-height:1.45;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color .12s,border-color .12s}
+  .toc a:hover{color:var(--ink)}
+  .toc a.on{color:var(--ink);border-left-color:var(--accent);font-weight:600}
+  .toc a.head{font-weight:600;color:var(--ink-2);margin-top:6px}
+  .toc .tocn{display:inline-block;min-width:3.6em;color:var(--mute);font-family:var(--mono);font-size:calc(11px * var(--fs))}
+  .sec-terms .termsbox{max-width:none;padding-top:0}
+  .sec-terms .termsbox h3.termsec:first-of-type{margin-top:0;padding-top:0;border-top:0}
+  @media(max-width:900px){ .toc{max-height:220px} .sec-faq,.sec-terms{padding-top:18px} }
   /* ===== 공통 ===== */
   footer{margin-top:72px;padding:24px 0 0;border-top:1px solid var(--line);color:var(--sub);font-size:calc(12.5px * var(--fs));line-height:1.8}
   footer b{color:var(--ink-2);font-weight:600}
@@ -442,7 +457,7 @@
     <div class="eyebrow" id="eyebrow">어칼팀 · 아바타 커미션</div>
     <h1 id="ptitle">아바타 세팅, 처음 맡기는 분을 위한 안내</h1>
     <p class="lead" id="lead-lib">구매 라이브러리 <b id="hcount"></b>개 · 분류 · 태그 · <b>아바타별</b> 검색 <span class="pill">2026-08-19 기준</span></p>
-    <p class="lead" id="lead-price" style="display:none">와루도 · 멜리고 · VRChat · VSeeFace 아바타 작업 비용입니다. 표기 금액은 <b>부가세 포함</b>, 결제는 <b>전달 후 계좌이체</b>입니다. <span class="pill">2026-08-21 기준</span></p>
+    <p class="lead" id="lead-price" style="display:none">와루도 · 멜리고 · VRChat · VSeeFace 아바타 작업 비용입니다. 표기 금액은 <b>부가세 포함</b>, 결제는 <b>전달 후 계좌이체</b>. 의뢰를 진행하면 <b>약관</b> 탭의 약관에 동의한 것으로 봅니다. <span class="pill">2026-08-21 기준</span></p>
     <p class="lead" id="lead-faq" style="display:none">의뢰 전에 자주 나오는 질문을 모았습니다. 여기에 없는 내용은 디스코드로 물어봐 주세요.</p>
     <p class="lead" id="lead-start" style="display:none">어칼팀은 와루도 · 멜리고 · VRChat · VSeeFace용 3D 아바타의 <b>의상 · 헤어 · 물리 · 셰이더 세팅</b>을 맡아 드립니다. 준비물만 챙겨 주시면 나머지는 순서대로 안내해 드려요.</p>
     <p class="lead" id="lead-terms" style="display:none">어둠속의칼날 팀 작업 의뢰 통합 계약 · 약관 전문입니다. 의뢰를 진행하면 이 약관에 동의한 것으로 봅니다.</p>
@@ -632,10 +647,6 @@
   <div id="view-price" style="display:none">
 <div class="preface">
 
-    <div class="pintro">
-      어칼 팀에서 작업을 수주하는 비용입니다.<br>
-      작업을 맡길 시 해당 페이지 '약관' 탭에 있는 약관에 동의한 것으로 간주합니다.
-    </div>
 
     <div class="psum">
       <div class="psumcard"><span class="k">작업 기간</span><span class="v">협의</span></div>
@@ -815,14 +826,16 @@
   </div><!-- /view-price -->
 
   <div id="view-faq" style="display:none">
-    <div class="preface"><div class="pintro">
-      자주 묻는 질문을 모았습니다. 아래에 없는 내용은 문의해 주세요.
-    </div></div>
-    <div class="faqsearch">
+    <section class="sec sec-faq"><div class="sec-h">
+      <div class="pstep"><span class="num">FAQ</span>궁금한 점 찾기<span class="sub">질문과 답변 본문에서 찾습니다. 없는 내용은 디스코드로 물어봐 주세요.</span></div>
+      <div class="faqsearch">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
       <input id="faqq" type="text" placeholder="키워드로 검색…  (예: 환불, 기간, 결제)" autocomplete="off">
     </div>
-    <div class="faq" id="faqlist">
+      <div class="faqcount" id="faqcount"></div>
+    </div>
+    <div class="sec-b">
+      <div class="faq" id="faqlist">
       <div class="faqitem"><div class="q">문의는 어디로 하나요?</div>
         <div class="ans"><b>디스코드</b>로 연락 주세요. 어둠속의칼날 <b>bladesinthedark</b> · 언어초밥 <b>kotonohazushi</b> · 티라바 <b>tirava2000</b><br>아이디는 <b>의뢰 시작</b> 탭에서 복사하실 수 있습니다.</div></div>
       <div class="faqitem"><div class="q">어칼 팀에 세 명의 작가가 있는데, 누구한테 맡겨야 하나요?</div>
@@ -857,6 +870,11 @@
         <b>헤어 비전용</b>은 따로 추가 비용 없이 대응하고 있습니다.</div></div>
       <div class="faqitem"><div class="q">물리(마지카 클로스)는 꼭 넣어야 하나요?</div>
         <div class="ans">필수는 아닙니다. 필요하신 항목에만 넣으시면 되고, 최초 세팅 비용 이후 항목별로 난이도에 따라 계산됩니다.</div></div>
+      <div class="faqitem"><div class="q">옷장 방식 중 단축키, 스트림덱, 리모컨이 있는데, 이건 무슨 차이가 있나요?</div>
+        <div class="ans"><b>단축키</b>는 키보드에 있는 키로 가볍게 하실 수 있도록 설정해드리나, 게임하거나 그럴 때 겹칠 수 있어 불편하시면 비추천입니다.<br>
+        <b>스트림덱</b>은 스트림덱을 따로 보유하고 계셔야 하며, 스트림덱에 옷장 변경 키를 연결해드립니다.<br>
+        <b>리모컨</b>은 추가금(최초 1회 20,000원)을 지불하시는 경우 설정해드리며, 썸네일과 리스트가 있는 웹페이지를 드리고 그 안에서 선택하시면 됩니다.<br>
+        기본적으로는 편의상 <b>리모컨을 권장</b>드리지만, 스트림덱을 이미 보유 중이시고 투컴이시라면 오히려 리모컨이 불편할 수 있어 스트림덱을 추천드리기도 하고 있습니다.</div></div>
       <div class="faqitem"><div class="q">납품 후에 문제가 생기면 어떻게 하나요? (보증)</div>
         <div class="ans">보증 기간은 <b>납품일부터 1개월</b>입니다. 이 기간 안에는 작업자 귀책의 <b>셋업 오류 · 파일 누락 · 실행 불가 · 계약 내용 미이행</b> 등을 무상으로 보정해 드립니다. 다만 유니티 · 와루도 · 셰이더 등의 업데이트로 생긴 호환성 문제나, 직접 파일을 수정하신 뒤 생긴 문제는 유상 작업 대상이 될 수 있습니다.</div></div>
       <div class="faqitem"><div class="q">수정 요청은 언제까지 할 수 있나요?</div>
@@ -871,16 +889,19 @@
         <div class="ans">기본적으로 <b>최소 6개월간 보관</b>합니다. 그 이상은 따로 말씀해 주시지 않으면 보관을 보장할 수 없고, 작업자의 <b>컴퓨터 용량 문제로 정리될 수 있습니다.</b></div></div>
     </div>
     <div class="faqempty" id="faqempty" style="display:none">검색 결과가 없어요</div>
+    </div></section>
   </div><!-- /view-faq -->
 
   <div id="view-terms" style="display:none">
-    <div class="preface"><div class="pintro">
-      작업을 맡기실 경우 아래 약관에 <b>동의한 것으로 간주</b>합니다.
-    </div></div>
+    <section class="sec sec-terms"><div class="sec-h">
+      <div class="pstep"><span class="num">목차</span>조문 바로가기<span class="sub">누르면 해당 조문으로 이동합니다.</span></div>
+      <nav class="toc" id="termstoc" aria-label="약관 목차"></nav>
+    </div>
+    <div class="sec-b">
     <div class="termsbox" id="terms-slot">
 <p class="tquote"><b>아래 내용에 동의하는 분만 신청 부탁드립니다.</b></p>
 <p class="tquote"><b>의뢰(신청·결제·작업 개시)는 본 약관 전체에 대한 동의로 간주됩니다.</b></p>
-<h3 class="termsec">신청 전 꼭 확인해 주세요 (핵심 고지)</h3>
+<h3 class="termsec" id="art-notice">신청 전 꼭 확인해 주세요 (핵심 고지)</h3>
 <p>아래 항목은 분쟁이 잦은 사항으로, 신청 전 각 항목을 개별적으로 확인해 주시기 바랍니다. 괄호 안은 자세한 내용을 정한 조항입니다.</p>
 <ul class="tlist">
 <li><b>동의 간주</b> — 견적·결제·작업 개시 요청 등 의뢰를 진행하는 행위는 본 약관 전체를 확인하고 동의한 것으로 봅니다. 약관을 읽지 않았다는 사정만으로 적용을 면할 수 없습니다. (제2조)</li>
@@ -897,7 +918,7 @@
 <li><b>묵시적 승인</b> — 팀이 단계별 컨펌을 요청한 뒤 의뢰인이 7영업일 내 회신하지 않으면, 사전 고지와 최소 1회 리마인드를 거친 후 해당 단계가 자동 승인된 것으로 보고 다음 단계로 진행할 수 있습니다(팀 과실 하자의 무상 보정은 별도). (제22조)</li>
 <li><b>연락 두절 시 처리</b> — 확인 요청 후 14일 이상 무응답 시 작업을 보류할 수 있고, 30일을 초과하면 계약을 종료할 수 있습니다. 이 경우 기성고는 팀에 귀속하고 미착수분은 환불 조항에 따라 처리합니다. (제23조)</li>
 </ul>
-<h3 class="termsec">한눈 요약</h3>
+<h3 class="termsec" id="art-summary">한눈 요약</h3>
 <ul class="tlist">
 <li><b>작업 범위</b>는 견적서·작업명세서에 기재된 항목에 한정하며, 기재되지 않은 요구나 &quot;알아서 예쁘게&quot; 같은 추상적 요청은 추가 작업 또는 방향성 참고로 봅니다. (제9조)</li>
 <li><b>일정(마감일)</b>은 작업물 전달 예정일로서 예상 일정이며, 팀은 성실히 이행하고 지연 사유는 고지합니다. (제3조, 제26조)</li>
@@ -1377,6 +1398,7 @@
 <p class="cl">③ 본 계약은 의뢰자의 전자서명 또는 전자적 동의가 완료된 날, 또는 의뢰자가 본 계약에 동의하고 대금을 지급하거나 작업 개시를 요청한 날부터 효력이 발생한다.</p>
 <p>---</p>
     </div>
+    </div></section>
   </div><!-- /view-terms -->
 
   <footer>
@@ -1909,6 +1931,36 @@ function recalc(){
   // 시작 탭이 숨겨진 채 로드됐으면(해시로 다른 탭 진입) 보일 때 다시 잰다
   document.querySelectorAll('.tab[data-view="start"],[data-goto="start"]').forEach(b=>b.addEventListener('click',()=>setTimeout(grow,0)));
   if(document.fonts && document.fonts.ready) document.fonts.ready.then(grow);
+})();
+
+/* ==BITD-TERMSTOC-JS== 약관 목차: 핵심 고지 · 한눈 요약 · 제1~67조, 스크롤 위치의 조문을 표시 */
+(function(){
+  const nav=document.getElementById('termstoc'), box=document.getElementById('terms-slot'); if(!nav||!box) return;
+  const heads=[...box.querySelectorAll('h3.termsec[id], h4.art[id]')];
+  nav.innerHTML=heads.map(h=>{
+    const t=h.textContent.trim(), m=t.match(/^(제\d+조)\s*(.*)$/);
+    const label=m?`<span class="tocn">${m[1]}</span>${m[2].replace(/^\(|\)$/g,'')}`:t;
+    return `<a href="#${h.id}" class="${h.tagName==='H3'?'head':''}" data-for="${h.id}">${label}</a>`;
+  }).join('');
+  const links={}; nav.querySelectorAll('a').forEach(a=>links[a.dataset.for]=a);
+  let cur=null;
+  function mark(id){ if(cur===id) return; if(cur&&links[cur]) links[cur].classList.remove('on'); cur=id; const a=links[id]; if(a){ a.classList.add('on');
+    const r=a.getBoundingClientRect(), n=nav.getBoundingClientRect(); if(r.top<n.top||r.bottom>n.bottom) a.scrollIntoView({block:'nearest'}); } }
+  if('IntersectionObserver' in window){
+    const vis=new Map();
+    const io=new IntersectionObserver(es=>{ es.forEach(e=>{ if(e.isIntersecting) vis.set(e.target.id,e.boundingClientRect.top); else vis.delete(e.target.id); });
+      if(vis.size){ let best=null,bt=1e9; vis.forEach((top,id)=>{ if(top<bt){bt=top;best=id;} }); mark(best); } },{rootMargin:'-20% 0px -60% 0px',threshold:0});
+    heads.forEach(h=>io.observe(h));
+  }
+  nav.addEventListener('click',e=>{ const a=e.target.closest('a'); if(a) setTimeout(()=>mark(a.dataset.for),50); });
+})();
+
+/* ==BITD-FAQCOUNT-JS== FAQ 개수/검색 결과 수 */
+(function(){
+  const c=document.getElementById('faqcount'), list=document.getElementById('faqlist'), q=document.getElementById('faqq'); if(!c||!list) return;
+  function upd(){ const all=list.querySelectorAll('.faqitem'); const shown=[...all].filter(el=>el.style.display!=='none').length;
+    c.textContent = (q&&q.value.trim()) ? `${shown}개 일치 · 전체 ${all.length}개` : `전체 ${all.length}개`; }
+  upd(); if(q) q.addEventListener('input',()=>setTimeout(upd,0));
 })();
 
 /* ==BITD-GOTO-JS== 탭이 아닌 버튼/링크로 뷰 이동 (히어로 버튼 · 브랜드) */
