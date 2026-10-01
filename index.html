@@ -438,6 +438,23 @@
     #filterbody{margin-top:10px;max-height:56vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
     .rowlab{min-width:auto}
     .countbar{margin:10px 0 4px}
+    /* ==BITD-MOB2UP== 한 줄에 2개. 카드가 ~164px 로 좁아지니 내부 치수도 같이 줄인다. */
+    .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:8px}
+    .card{border-radius:10px;contain-intrinsic-size:auto 300px}
+    .card:hover{transform:none}
+    .body{padding:9px 10px 11px;gap:5px}
+    .title{font-size:calc(12px * var(--fs));line-height:1.38;min-height:2.76em;-webkit-line-clamp:2}
+    .note{font-size:calc(10.5px * var(--fs))}
+    .badges-tl{top:6px;left:6px;gap:3px}
+    .badge-cat,.badge-av{font-size:calc(10px * var(--fs));padding:2px 6px}
+    .badge-av{bottom:6px;right:6px}
+    .tags{gap:3px}
+    .tag{font-size:calc(10px * var(--fs));padding:2px 6px}
+    .giftmark{font-size:calc(9.5px * var(--fs));padding:1px 5px}
+    .avwrap{font-size:calc(10.5px * var(--fs))}
+    .avchip,.avmore{font-size:calc(9.5px * var(--fs));padding:2px 5px}
+    .meta{font-size:calc(10.5px * var(--fs));gap:4px}
+    .open{padding:7px 4px;font-size:calc(11.5px * var(--fs));border-radius:7px}
   }
   @media (prefers-reduced-motion:reduce){ #fbtn .fchev{transition:none} }
   @media (prefers-reduced-motion:reduce){ .totop{transition:opacity .18s,visibility .18s;transform:none} .card,.card .thumb img{transition:none} }
