@@ -243,7 +243,9 @@
   .selwrap::after{content:"▾";position:absolute;right:11px;color:var(--sub);pointer-events:none;font-size:calc(11px * var(--fs))}
 
   /* ===== 보유 상품 ===== */
-  .toolbar{position:sticky;top:var(--topbar-h);z-index:30;background:var(--bar);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  /* ==BITD-NOSTICKY== 검색·필터 바는 따라다니지 않는다(2026-10-07). 스크롤하면 같이 올라가 사라지고,
+     돌아갈 길은 '맨 위로' 버튼 + 필터 조작 시 자동 scrollTo(0,0). 스티키가 아니라 배경/블러는 뺀다. */
+  .toolbar{position:static;background:transparent;
     padding:14px 0 10px;margin:18px 0 6px;border-bottom:1px solid var(--line)}
   .searchbox{position:relative;margin-bottom:10px}
   .searchbox svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);opacity:.5}
