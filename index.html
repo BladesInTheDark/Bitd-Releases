@@ -1830,7 +1830,8 @@ function renderFolio(){
     const b=document.createElement('button');
     b.type='button'; b.className='folio-sw'+(w.key===folioCur?' on':''); b.dataset.folio=w.key;
     b.textContent=w.label;
-    const c=document.createElement('span'); c.className='n'; c.textContent=(w.items||[]).length; b.appendChild(c);
+    const c=document.createElement('span'); c.className='n';
+    c.textContent=(w.items||[]).length+(w.hidden||0); b.appendChild(c);   /* 헤드라인과 같은 수 */
     sw.appendChild(b);
   }
   const cur=FOLIO.workers.find(w=>w.key===folioCur)||FOLIO.workers[0];
@@ -1838,15 +1839,15 @@ function renderFolio(){
   const cnt=document.getElementById('folio-count');
   if(cnt){
     cnt.textContent='';
-    /* ★숫자는 화면에 보이는 수 그대로. 비공개 요청분은 더하지 않고 "제외" 로만 밝힌다
-       (사용자 지시 2026-11-11 — 더해서 쓰면 둘을 합친 수로 오해된다) */
+    /* ★숫자는 비공개 요청분을 더한 수. 괄호를 "포함" 으로 적어 그 수에 이미 들어있음을 밝힌다
+       (사용자 확정 2026-11-11 — "제외" 로 쓰면 더 빼야 하는 것처럼 읽힌다) */
     const hid=cur.hidden||0;
     cnt.appendChild(document.createTextNode(cur.key==='all' ? '어칼 팀에게 현재 ' : (cur.label+' 에게 현재 ')));
-    const b2=document.createElement('b'); b2.textContent=String(list.length); cnt.appendChild(b2);
+    const b2=document.createElement('b'); b2.textContent=String(list.length+hid); cnt.appendChild(b2);
     cnt.appendChild(document.createTextNode('명의 스트리머 분들이 작업을 맡겨주고 계십니다'));
     if(hid){
       const h=document.createElement('span'); h.className='hid';
-      h.textContent=' (비공개 요청 '+hid+'명 제외)'; cnt.appendChild(h);
+      h.textContent=' (비공개 요청 '+hid+'명 포함)'; cnt.appendChild(h);
     }
   }
   const frag=document.createDocumentFragment();
