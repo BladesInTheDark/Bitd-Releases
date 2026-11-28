@@ -312,14 +312,15 @@
   .card.warn .title a:hover{color:var(--del-ink)}
   /* ==BITD-ADULT-BLUR== 19금 썸네일 약한 블러 (2026-11-27 사용자: 세부 묘사만 안 보이게, 윤곽·위치는 보여도 됨).
      세기는 --adult-blur 하나만 바꾼다. 썸네일 가운데 '보기' 를 누르면 그 카드만 블러를 끈다. */
-  .card.adult{--adult-blur:6px}
-  .card.adult .thumb img{filter:blur(var(--adult-blur));transform:scale(1.08)}
-  .card.adult:hover .thumb img{transform:scale(1.08)}
+  .card.adult{--adult-blur:3px}   /* 2026-11-28 사용자: 6px 은 세다 -> 3px */
+  .card.adult .thumb img{filter:blur(var(--adult-blur));transform:scale(1.05)}
+  .card.adult:hover .thumb img{transform:scale(1.05)}
   .card.adult.warn .thumb img{filter:blur(var(--adult-blur)) grayscale(1)}
   .card.adult.reveal .thumb img{filter:none;transform:none}
   .card.adult.reveal.warn .thumb img{filter:grayscale(1)}
-  .adultveil{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);padding:5px 12px;border-radius:7px;border:none;cursor:pointer;
-    background:rgba(10,10,12,.55);color:#fff;font-size:calc(11.5px * var(--fs));font-weight:600;backdrop-filter:blur(2px)}
+  .adultveil{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);min-width:84px;min-height:44px;padding:10px 24px;border-radius:12px;
+    border:1px solid rgba(255,255,255,.35);cursor:pointer;background:rgba(10,10,12,.6);color:#fff;font-size:calc(15px * var(--fs));font-weight:700;
+    letter-spacing:.02em;backdrop-filter:blur(2px);box-shadow:0 2px 10px rgba(0,0,0,.35)}   /* 2026-11-28 사용자: 누르기 쉽게 크게 */
   .adultveil:hover{background:rgba(10,10,12,.75)}
   .card.adult.reveal .adultveil{display:none}
   .hidden-item img.adult{filter:blur(2px)}
